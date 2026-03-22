@@ -41,6 +41,47 @@ text = "Real Coin"
 layout_mode = 2
 text = "Fake Coin"
 
+[node name="Stats" type="HBoxContainer" parent="." unique_id=114771017]
+offset_right = 1152.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="BlacksmithLoyalty" type="Label" parent="Stats" unique_id=1264336897]
+layout_mode = 2
+text = "Blacksmith Loyality:
+0.0"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Stats" unique_id=1070320775]
+layout_mode = 2
+text = "      "
+
+[node name="Money" type="Label" parent="Stats" unique_id=30920861]
+layout_mode = 2
+text = "Money:
+0.0"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Stats" unique_id=792298455]
+layout_mode = 2
+text = "      "
+
+[node name="MinerLoyalty" type="Label" parent="Stats" unique_id=543130658]
+layout_mode = 2
+text = "Miner Loyalty:
+0.0"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Stats" unique_id=1926549653]
+layout_mode = 2
+text = "      "
+
+[node name="MetalQuality" type="Label" parent="Stats" unique_id=2038689412]
+layout_mode = 2
+text = "Metal Quality:
+0.0"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Coins" to="." method="_on_coins_pressed"]
 [connection signal="pressed" from="Coins/VBoxContainer/Real" to="." method="_on_real_pressed"]
 [connection signal="pressed" from="Coins/VBoxContainer/Fake" to="." method="_on_fake_pressed"]
