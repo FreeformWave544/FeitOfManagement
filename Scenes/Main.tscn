@@ -2,10 +2,30 @@
 
 [ext_resource type="Script" uid="uid://ddp1nvv2vsedk" path="res://Scenes/main.gd" id="1_r150o"]
 
-[node name="Main" type="Node2D" unique_id=1911538957]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r150o"]
+border_width_left = 300
+border_width_right = 300
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_detail = 20
+expand_margin_top = 10.0
+
+[sub_resource type="Theme" id="Theme_idj7w"]
+Label/styles/normal = SubResource("StyleBoxFlat_r150o")
+
+[node name="Main" type="Control" unique_id=1253290123]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_r150o")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1173887914]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
@@ -19,6 +39,7 @@ text = "Make a Coin..."
 
 [node name="Coins" type="Panel" parent="." unique_id=1970488315]
 visible = false
+layout_mode = 0
 offset_left = 326.0
 offset_top = 74.0
 offset_right = 826.0
@@ -42,6 +63,7 @@ layout_mode = 2
 text = "Fake Coin"
 
 [node name="Stats" type="HBoxContainer" parent="." unique_id=114771017]
+layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 40.0
 alignment = 1
@@ -82,6 +104,82 @@ text = "Metal Quality:
 0.0"
 horizontal_alignment = 1
 
+[node name="User" type="Control" parent="." unique_id=287298829]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text" type="Label" parent="User" unique_id=927823323]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -127.0
+offset_right = 576.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_idj7w")
+horizontal_alignment = 1
+
+[node name="InputBox" type="LineEdit" parent="User" unique_id=1142793623]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -168.0
+offset_right = 576.0
+offset_bottom = -137.0
+grow_horizontal = 2
+grow_vertical = 0
+placeholder_text = "Tell me stuff."
+alignment = 1
+
+[node name="MoneyInput" type="SpinBox" parent="User" unique_id=1267766247]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -43.25
+offset_top = -168.0
+offset_right = 43.25
+offset_bottom = -137.0
+grow_horizontal = 2
+grow_vertical = 0
+step = 0.01
+allow_greater = true
+alignment = 1
+prefix = "£"
+custom_arrow_step = 1.0
+select_all_on_focus = true
+
+[node name="Confirm" type="Button" parent="User" unique_id=1793984258]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -78.0
+offset_top = -168.0
+offset_bottom = -137.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Confirm?"
+
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Coins" to="." method="_on_coins_pressed"]
 [connection signal="pressed" from="Coins/VBoxContainer/Real" to="." method="_on_real_pressed"]
 [connection signal="pressed" from="Coins/VBoxContainer/Fake" to="." method="_on_fake_pressed"]
+[connection signal="pressed" from="User/Confirm" to="." method="_on_confirm_pressed"]

@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 AppConfig="*uid://cjke6crjg14a0"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/maaacks_options_menus/plugin.cfg")
