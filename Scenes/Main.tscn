@@ -15,6 +15,12 @@ expand_margin_top = 10.0
 [sub_resource type="Theme" id="Theme_idj7w"]
 Label/styles/normal = SubResource("StyleBoxFlat_r150o")
 
+[sub_resource type="LabelSettings" id="LabelSettings_r150o"]
+font_size = 128
+font_color = Color(1, 1, 0.5411765, 1)
+outline_size = 5
+outline_color = Color(0.6745098, 1, 1, 1)
+
 [node name="Main" type="Control" unique_id=1253290123]
 layout_mode = 3
 anchors_preset = 15
@@ -67,6 +73,26 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 40.0
 alignment = 1
+
+[node name="Hour" type="Label" parent="Stats" unique_id=1018409177]
+layout_mode = 2
+text = "Hour:
+1"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Stats" unique_id=790800601]
+layout_mode = 2
+text = "      "
+
+[node name="Day" type="Label" parent="Stats" unique_id=1965800489]
+layout_mode = 2
+text = "Day:
+1"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Stats" unique_id=825044399]
+layout_mode = 2
+text = "      "
 
 [node name="BlacksmithLoyalty" type="Label" parent="Stats" unique_id=1264336897]
 layout_mode = 2
@@ -178,6 +204,32 @@ offset_bottom = -137.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Confirm?"
+
+[node name="FadeBox" type="ColorRect" parent="." unique_id=438942413]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.16862746, 0.16862746, 0.16862746, 0)
+
+[node name="Label" type="Label" parent="FadeBox" unique_id=1806264430]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_r150o")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Coins" to="." method="_on_coins_pressed"]
 [connection signal="pressed" from="Coins/VBoxContainer/Real" to="." method="_on_real_pressed"]
