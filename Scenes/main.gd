@@ -8,8 +8,6 @@ var time_left := 6
 var day := 1
 var confirmed := false
 var user_input := 0.0
-#coins differ from eachother greatly, as such
-#i gave genuine coins, goods, and each quality of counterfeits it's own var
 var coins := {
 	"genuine": 0,
 	"cQ1": 0,
@@ -64,28 +62,35 @@ func make_goods():
 	goods += 1
 
 
+var _usedg := 0
 var usedg:
-	set (new):
-		usedg = clamp(new, 0, coins["genuine"])
-var usedc:
-	set (new):
-		usedc = clamp(new, 0, coins["cQ1"])
-var usedcc:
-	set (new):
-		usedcc = clamp(new, 0, coins["cQ2"])
-var usedccc:
-	set (new):
-		usedccc = clamp(new, 0, coins["cQ3"])
+	get: return _usedg
+	set(value): _usedg = clamp(value, 0, coins["genuine"])
 
-func trade(price,product,amnt,exp):
-	var usedg:int
-	if price ==  usedg + usedc + usedcc + usedccc:
+var _usedc := 0
+var usedc:
+	get: return _usedc
+	set(value): _usedc = clamp(value, 0, coins["genuine"])
+
+var _usedcc := 0
+var usedcc:
+	get: return _usedcc
+	set(value): _usedcc = clamp(value, 0, coins["genuine"])
+
+var _usedccc := 0
+var usedccc:
+	get: return _usedccc
+	set(value): _usedccc = clamp(value, 0, coins["genuine"])
+
+
+func trade(price, product_name:String, amnt, exp):
+	if price == (usedg + usedc + usedcc + usedccc):
 		coins["genuine"] -= usedg
 		coins["cQ1"] -= usedc
 		coins["cQ2"] -= usedcc
 		coins["cQ3"] -= usedccc
 		distributedC += usedc + usedcc + usedccc
-		product += amnt
+		self[product_name] += amnt
 		var risk: int
 		risk = ((usedc * 1.5 + usedcc * 1 + usedccc * 0.5) * exp + usedg * -1) / price
 		var danger =randi() % price * 2 + 1 
@@ -97,13 +102,13 @@ func trade(price,product,amnt,exp):
 
 
 func buy_sheets():
-	trade(5,sheets,10,1)
+	trade(5, "sheets", 10, 1)
 
 func buy_blanks():
-	trade(7,blanks,10,1)
+	trade(7,"blanks", 10, 1)
 
 func donate():
-	trade(50,sus,-1,1)
+	trade(50, "sus", -1, 1)
 
 func sell_goods():
 	goods -= 3

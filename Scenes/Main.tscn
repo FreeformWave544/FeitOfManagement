@@ -35,13 +35,49 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1769743495]
+[node name="Button Container" type="FlowContainer" parent="CenterContainer" unique_id=1676433335]
 layout_mode = 2
 alignment = 1
 
-[node name="Coins" type="Button" parent="CenterContainer/VBoxContainer" unique_id=442264442]
+[node name="Coins" type="Button" parent="CenterContainer/Button Container" unique_id=442264442]
 layout_mode = 2
 text = "Make a Coin..."
+
+[node name="cutSheet" type="Button" parent="CenterContainer/Button Container" unique_id=508225250]
+layout_mode = 2
+text = "Cut some sheets..."
+
+[node name="strikeCF" type="Button" parent="CenterContainer/Button Container" unique_id=829792879]
+layout_mode = 2
+text = "Strike counterfeit coins..."
+
+[node name="EDMCF" type="Button" parent="CenterContainer/Button Container" unique_id=447297005]
+layout_mode = 2
+text = "EDM counterfeit coins..."
+
+[node name="DbleCF" type="Button" parent="CenterContainer/Button Container" unique_id=790943090]
+layout_mode = 2
+text = "Doulbe counterfeit coins..."
+
+[node name="alter" type="Button" parent="CenterContainer/Button Container" unique_id=1952230999]
+layout_mode = 2
+text = "Alter coins..."
+
+[node name="goods" type="Button" parent="CenterContainer/Button Container" unique_id=770822881]
+layout_mode = 2
+text = "Make Goods..."
+
+[node name="buy_sheets" type="Button" parent="CenterContainer/Button Container" unique_id=40691707]
+layout_mode = 2
+text = "Buy Sheets..."
+
+[node name="buy_blanks" type="Button" parent="CenterContainer/Button Container" unique_id=41891874]
+layout_mode = 2
+text = "Buy Blanks..."
+
+[node name="donate" type="Button" parent="CenterContainer/Button Container" unique_id=871090425]
+layout_mode = 2
+text = "Donate..."
 
 [node name="Coins" type="Panel" parent="." unique_id=1970488315]
 visible = false
@@ -231,7 +267,16 @@ grow_vertical = 2
 label_settings = SubResource("LabelSettings_r150o")
 horizontal_alignment = 1
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Coins" to="." method="_on_coins_pressed"]
+[connection signal="pressed" from="CenterContainer/Button Container/Coins" to="." method="_on_coins_pressed"]
+[connection signal="pressed" from="CenterContainer/Button Container/cutSheet" to="." method="cutting_sheets"]
+[connection signal="pressed" from="CenterContainer/Button Container/strikeCF" to="." method="strike_counterfeit_coins"]
+[connection signal="pressed" from="CenterContainer/Button Container/EDMCF" to="." method="edm_counterfeit_coins"]
+[connection signal="pressed" from="CenterContainer/Button Container/DbleCF" to="." method="double_counterfeit"]
+[connection signal="pressed" from="CenterContainer/Button Container/alter" to="." method="alter_coins"]
+[connection signal="pressed" from="CenterContainer/Button Container/goods" to="." method="make_goods"]
+[connection signal="pressed" from="CenterContainer/Button Container/buy_sheets" to="." method="buy_sheets"]
+[connection signal="pressed" from="CenterContainer/Button Container/buy_blanks" to="." method="buy_blanks"]
+[connection signal="pressed" from="CenterContainer/Button Container/donate" to="." method="donate"]
 [connection signal="pressed" from="Coins/VBoxContainer/Real" to="." method="_on_real_pressed"]
 [connection signal="pressed" from="Coins/VBoxContainer/Fake" to="." method="_on_fake_pressed"]
 [connection signal="pressed" from="User/Confirm" to="." method="_on_confirm_pressed"]
