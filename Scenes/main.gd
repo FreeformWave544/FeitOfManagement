@@ -14,40 +14,43 @@ var coins := {
 	"cQ2": 0,
 	"cQ3": 0
 }
-var distributedC: int
-var sheets: int
-var blanks: int
+var distributedC: int = 0
+var sheets: int = 0
+var blanks: int = 0
 
-var rep:int:
-		set (new):
-			rep = clamp(new, 1, 5)
+var _rep := 1
+var rep:
+	get: return _rep
+	set(value): _rep = clamp(value, 1, 5)
 
-var sus:int:
-	set (new):
-		sus = clamp(new, 1, 5)
+var _sus := 1
+var sus:
+	get: return _sus
+	set(value): _sus = clamp(value, 1, 5)
 
 func cutting_sheets():
 	sheets -= 10
 	blanks += 10
-
-
-
+	_update_UI()
 
 func strike_counterfeit_coins():
 	blanks -= 10
 	coins["cQ3"] += 10
+	_update_UI()
 
 
 #emd is the same as spark erosion
 func edm_counterfeit_coins():
 	blanks -= 20
 	coins["cQ2"] += 20
+	_update_UI()
 
 
 func double_counterfeit():
 	blanks -= 30
 	coins["cQ2"] += 10
 	coins["cQ1"] += 20
+	_update_UI()
 
 
 var new_goods_out:bool = false
@@ -56,10 +59,12 @@ var goods := 0
 func alter_coins():
 	coins["genuine"] -= 3
 	goods += 2
+	_update_UI()
 
 func make_goods():
 	sheets -= 1
 	goods += 1
+	_update_UI()
 
 
 var _usedg := 0
@@ -70,35 +75,43 @@ var usedg:
 var _usedc := 0
 var usedc:
 	get: return _usedc
-	set(value): _usedc = clamp(value, 0, coins["genuine"])
+	set(value): _usedc = clamp(value, 0, coins["cQ1"])
 
 var _usedcc := 0
 var usedcc:
 	get: return _usedcc
-	set(value): _usedcc = clamp(value, 0, coins["genuine"])
+	set(value): _usedcc = clamp(value, 0, coins["cQ2"])
 
 var _usedccc := 0
 var usedccc:
 	get: return _usedccc
-	set(value): _usedccc = clamp(value, 0, coins["genuine"])
+	set(value): _usedccc = clamp(value, 0, coins["cQ3"])
 
 
 func trade(price, product_name:String, amnt, exp):
-	if price == (usedg + usedc + usedcc + usedccc):
-		coins["genuine"] -= usedg
-		coins["cQ1"] -= usedc
-		coins["cQ2"] -= usedcc
-		coins["cQ3"] -= usedccc
-		distributedC += usedc + usedcc + usedccc
-		self[product_name] += amnt
-		var risk: int
-		risk = ((usedc * 1.5 + usedcc * 1 + usedccc * 0.5) * exp + usedg * -1) / price
-		var danger =randi() % price * 2 + 1 
-		if danger < risk:
-			sus += 1
-		
-	else:
-		pass
+	print(price)
+	var total = usedg + usedc + usedcc + usedccc
+	if total < price: return
+	var remaining = price
+	var take_g = min(usedg, remaining)
+	remaining -= take_g
+	var take_c1 = min(usedc, remaining)
+	remaining -= take_c1
+	var take_c2 = min(usedcc, remaining)
+	remaining -= take_c2
+	var take_c3 = min(usedccc, remaining)
+	remaining -= take_c3
+	coins["genuine"] -= take_g
+	coins["cQ1"] -= take_c1
+	coins["cQ2"] -= take_c2
+	coins["cQ3"] -= take_c3
+	distributedC += take_c1 + take_c2 + take_c3
+	self[product_name] += amnt
+	var fake_value = take_c1 * 1.5 + take_c2 * 1.0 + take_c3 * 0.5
+	var risk = clamp((fake_value * exp - take_g) / price, 0.0, 1.0)
+	if randf() < risk: sus += 1
+	money -= price
+	_update_UI()
 
 
 func buy_sheets():
@@ -114,6 +127,7 @@ func sell_goods():
 	goods -= 3
 	coins["genuine"] += 10 + rep
 	distributedC += 5 + rep
+	_update_UI()
 
 
 
@@ -132,6 +146,13 @@ func _update_UI():
 	$Stats/Money.text = "Money:\n£" + str(money)
 	$Stats/MinerLoyalty.text = "Miner Loyalty:\n" + str(minerLoyalty)
 	$Stats/MetalQuality.text = "Metal Quality:\n" + str(metalQuality)
+	$CoinCount/cQ1.text = "Coins (Quality 1):\n" + str(coins["cQ1"])
+	$CoinCount/cQ2.text = "Coins (Quality 2):\n" + str(coins["cQ2"])
+	$CoinCount/cQ3.text = "Coins (Quality 3):\n" + str(coins["cQ3"])
+	$CoinCount/Real.text = "Real Coins:\n" + str(coins["genuine"])
+	$CoinCount/Distributed.text = "Distributed Coins:\n" + str(distributedC)
+	$Materials/Sheets.text = "Sheets:\n" + str(sheets)
+	$Materials/Blanks.text = "Blanks:\n" + str(blanks)
 
 func _on_coins_pressed() -> void:
 	time_left -= 1
@@ -139,6 +160,7 @@ func _on_coins_pressed() -> void:
 		hour_end()
 		return
 	$Coins.show()
+	_update_UI()
 
 func _on_real_pressed() -> void:
 	coins["genuine"] += 1

@@ -108,6 +108,7 @@ text = "Fake Coin"
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 40.0
+theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Hour" type="Label" parent="Stats" unique_id=1018409177]
@@ -116,19 +117,11 @@ text = "Hour:
 1"
 horizontal_alignment = 1
 
-[node name="Label5" type="Label" parent="Stats" unique_id=790800601]
-layout_mode = 2
-text = "      "
-
 [node name="Day" type="Label" parent="Stats" unique_id=1965800489]
 layout_mode = 2
 text = "Day:
 1"
 horizontal_alignment = 1
-
-[node name="Label4" type="Label" parent="Stats" unique_id=825044399]
-layout_mode = 2
-text = "      "
 
 [node name="BlacksmithLoyalty" type="Label" parent="Stats" unique_id=1264336897]
 layout_mode = 2
@@ -136,19 +129,11 @@ text = "Blacksmith Loyality:
 0.0"
 horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Stats" unique_id=1070320775]
-layout_mode = 2
-text = "      "
-
 [node name="Money" type="Label" parent="Stats" unique_id=30920861]
 layout_mode = 2
 text = "Money:
 0.0"
 horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="Stats" unique_id=792298455]
-layout_mode = 2
-text = "      "
 
 [node name="MinerLoyalty" type="Label" parent="Stats" unique_id=543130658]
 layout_mode = 2
@@ -156,14 +141,66 @@ text = "Miner Loyalty:
 0.0"
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="Stats" unique_id=1926549653]
-layout_mode = 2
-text = "      "
-
 [node name="MetalQuality" type="Label" parent="Stats" unique_id=2038689412]
 layout_mode = 2
 text = "Metal Quality:
 0.0"
+horizontal_alignment = 1
+
+[node name="CoinCount" type="HBoxContainer" parent="." unique_id=778856417]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 1152.0
+offset_bottom = 109.0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Distributed" type="Label" parent="CoinCount" unique_id=934176791]
+layout_mode = 2
+text = "Distributed Coins:
+0"
+horizontal_alignment = 1
+
+[node name="cQ1" type="Label" parent="CoinCount" unique_id=1409492234]
+layout_mode = 2
+text = "Coins (Quality 1):
+0"
+horizontal_alignment = 1
+
+[node name="cQ2" type="Label" parent="CoinCount" unique_id=1492464115]
+layout_mode = 2
+text = "Coins (Quality 2):
+0"
+horizontal_alignment = 1
+
+[node name="cQ3" type="Label" parent="CoinCount" unique_id=1634907154]
+layout_mode = 2
+text = "Coins (Quality 3):
+0"
+horizontal_alignment = 1
+
+[node name="Real" type="Label" parent="CoinCount" unique_id=246518977]
+layout_mode = 2
+text = "Real Coins:
+0"
+horizontal_alignment = 1
+
+[node name="Materials" type="VBoxContainer" parent="." unique_id=480590929]
+layout_mode = 0
+offset_right = 139.0
+offset_bottom = 309.0
+theme_override_constants/separation = 16
+
+[node name="Sheets" type="Label" parent="Materials" unique_id=475825541]
+layout_mode = 2
+text = "Sheets:
+0"
+horizontal_alignment = 1
+
+[node name="Blanks" type="Label" parent="Materials" unique_id=1449769749]
+layout_mode = 2
+text = "Blanks:
+0"
 horizontal_alignment = 1
 
 [node name="User" type="Control" parent="." unique_id=287298829]
