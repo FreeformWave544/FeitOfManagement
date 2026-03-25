@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dcg6kug4ahkb0"]
+
+[ext_resource type="Script" uid="uid://lupmamru50bf" path="res://Scenes/anvil.gd" id="1_1hs47"]
+
+[node name="anvil" type="Node2D" unique_id=1835242686]
+script = ExtResource("1_1hs47")

@@ -23,6 +23,10 @@ AppConfig="*uid://cjke6crjg14a0"
 
 window/stretch/mode="canvas_items"
 
+[dotnet]
+
+project/assembly_name="FeitOfManagement"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg", "res://addons/maaacks_options_menus/plugin.cfg")
