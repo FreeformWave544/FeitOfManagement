@@ -1,7 +1,5 @@
 extends Control
 
-var realCoins := 0
-var fakeCoins := 0
 var metalQuality := 10.0
 var blacksmithLoyalty := 10.0
 var minerLoyalty := 10.0
@@ -10,6 +8,110 @@ var time_left := 6
 var day := 1
 var confirmed := false
 var user_input := 0.0
+#coins differ from eachother greatly, as such
+#i gave genuine coins, goods, and each quality of counterfeits it's own var
+var coins := {
+	"genuine": 0,
+	"cQ1": 0,
+	"cQ2": 0,
+	"cQ3": 0
+}
+var distributedC: int
+var sheets: int
+var blanks: int
+
+var rep:int:
+		set (new):
+			rep = clamp(new, 1, 5)
+
+var sus:int:
+	set (new):
+		sus = clamp(new, 1, 5)
+
+func cutting_sheets():
+	sheets -= 10
+	blanks += 10
+
+
+
+
+func strike_counterfeit_coins():
+	blanks -= 10
+	coins["cQ3"] += 10
+
+
+#emd is the same as spark erosion
+func edm_counterfeit_coins():
+	blanks -= 20
+	coins["cQ2"] += 20
+
+
+func double_counterfeit():
+	blanks -= 30
+	coins["cQ2"] += 10
+	coins["cQ1"] += 20
+
+
+var new_goods_out:bool = false
+var goods := 0
+
+func alter_coins():
+	coins["genuine"] -= 3
+	goods += 2
+
+func make_goods():
+	sheets -= 1
+	goods += 1
+
+
+var usedg:
+	set (new):
+		usedg = clamp(new, 0, coins["genuine"])
+var usedc:
+	set (new):
+		usedc = clamp(new, 0, coins["cQ1"])
+var usedcc:
+	set (new):
+		usedcc = clamp(new, 0, coins["cQ2"])
+var usedccc:
+	set (new):
+		usedccc = clamp(new, 0, coins["cQ3"])
+
+func trade(price,product,amnt,exp):
+	var usedg:int
+	if price ==  usedg + usedc + usedcc + usedccc:
+		coins["genuine"] -= usedg
+		coins["cQ1"] -= usedc
+		coins["cQ2"] -= usedcc
+		coins["cQ3"] -= usedccc
+		distributedC += usedc + usedcc + usedccc
+		product += amnt
+		var risk: int
+		risk = ((usedc * 1.5 + usedcc * 1 + usedccc * 0.5) * exp + usedg * -1) / price
+		var danger =randi() % price * 2 + 1 
+		if danger < risk:
+			sus += 1
+		
+	else:
+		pass
+
+
+func buy_sheets():
+	trade(5,sheets,10,1)
+
+func buy_blanks():
+	trade(7,blanks,10,1)
+
+func donate():
+	trade(50,sus,-1,1)
+
+func sell_goods():
+	goods -= 3
+	coins["genuine"] += 10 + rep
+	distributedC += 5 + rep
+
+
+
 
 func _ready() -> void:
 	_update_UI()
@@ -34,7 +136,7 @@ func _on_coins_pressed() -> void:
 	$Coins.show()
 
 func _on_real_pressed() -> void:
-	realCoins += 1
+	coins["genuine"] += 1
 	blacksmithLoyalty -= 1.0
 	metalQuality += 1.0
 	money += 0.75
@@ -42,7 +144,7 @@ func _on_real_pressed() -> void:
 	_update_UI()
 
 func _on_fake_pressed() -> void:
-	fakeCoins += 1
+	coins["cQ" + str(randi_range(1,3))] += 1
 	blacksmithLoyalty += 1.0
 	metalQuality -= 1.0
 	money += 2
