@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cvajp6ld1a2ux"]
+
+[ext_resource type="Texture2D" uid="uid://bsn1fum5lhqy" path="res://assets/char anims/salesman/idle/salesman idle1.png" id="1_3kj6y"]
+[ext_resource type="Texture2D" uid="uid://bdfyhnygpetru" path="res://assets/char anims/salesman/idle/salesman idle2.png" id="2_uevcd"]
+[ext_resource type="Texture2D" uid="uid://blpx086t8sdxw" path="res://assets/char anims/salesman/idle/salesman idle3.png" id="3_mx080"]
+[ext_resource type="Texture2D" uid="uid://gc6vx557ew8s" path="res://assets/char anims/salesman/idle/salesman idle4.png" id="4_8ai0d"]
+[ext_resource type="Texture2D" uid="uid://dpqxtstob3spc" path="res://assets/char anims/salesman/idle/salesman idle5.png" id="5_n4ac7"]
+[ext_resource type="Texture2D" uid="uid://dk18w01nuoswf" path="res://assets/char anims/salesman/idle/salesman idle6.png" id="6_l1v0c"]
+[ext_resource type="Texture2D" uid="uid://c6pugahnamlb8" path="res://assets/char anims/salesman/idle/salesman idle7.png" id="7_er8iw"]
+[ext_resource type="Texture2D" uid="uid://c7i6vj82vm74s" path="res://assets/char anims/salesman/idle/salesman idle8.png" id="8_ytry6"]
+[ext_resource type="Texture2D" uid="uid://2tfrx5qmhx2i" path="res://assets/char anims/salesman/idle/salesman idle9.png" id="9_kvkpa"]
+[ext_resource type="Texture2D" uid="uid://dsnhfiry872op" path="res://assets/char anims/salesman/idle/salesman idle10.png" id="10_wkai6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dwxkt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3kj6y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uevcd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_mx080")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8ai0d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n4ac7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l1v0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_er8iw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ytry6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_kvkpa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wkai6")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 7.0
+}]
+
+[node name="sales_man" type="Node2D" unique_id=1484265610]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=927366038]
+sprite_frames = SubResource("SpriteFrames_dwxkt")
+animation = &"new_animation"
+frame_progress = 0.5916293
+
+[node name="Button" type="Button" parent="." unique_id=1232404125]
+offset_left = -15.0
+offset_top = -16.0
+offset_right = 15.0
+offset_bottom = 17.0

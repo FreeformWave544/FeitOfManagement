@@ -1,6 +1,13 @@
 [gd_scene format=3 uid="uid://d3qljo7nuqolq"]
 
 [ext_resource type="Script" uid="uid://ddp1nvv2vsedk" path="res://Scenes/main.gd" id="1_r150o"]
+[ext_resource type="Texture2D" uid="uid://dg1kdrr7hu8i7" path="res://assets/objects/anvil.png" id="2_kln2b"]
+[ext_resource type="Texture2D" uid="uid://bg0prjf3lnkuu" path="res://assets/objects/edm.png" id="3_rgh2o"]
+[ext_resource type="PackedScene" uid="uid://c5im17riayd4y" path="res://Scenes/artist.tscn" id="4_50glp"]
+[ext_resource type="PackedScene" uid="uid://bq83j26mxnu5t" path="res://Scenes/blacksmith.tscn" id="5_vy5pj"]
+[ext_resource type="PackedScene" uid="uid://bop0h6arsinrr" path="res://Scenes/leader.tscn" id="6_bmxlf"]
+[ext_resource type="PackedScene" uid="uid://cvajp6ld1a2ux" path="res://Scenes/sales_man.tscn" id="7_4kpch"]
+[ext_resource type="PackedScene" uid="uid://degwlgpwv8gi2" path="res://Scenes/tech.tscn" id="8_grg3l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r150o"]
 border_width_left = 300
@@ -38,46 +45,6 @@ offset_bottom = 648.0
 [node name="Button Container" type="FlowContainer" parent="CenterContainer" unique_id=1676433335]
 layout_mode = 2
 alignment = 1
-
-[node name="Coins" type="Button" parent="CenterContainer/Button Container" unique_id=442264442]
-layout_mode = 2
-text = "Make a Coin..."
-
-[node name="cutSheet" type="Button" parent="CenterContainer/Button Container" unique_id=508225250]
-layout_mode = 2
-text = "Cut some sheets..."
-
-[node name="strikeCF" type="Button" parent="CenterContainer/Button Container" unique_id=829792879]
-layout_mode = 2
-text = "Strike counterfeit coins..."
-
-[node name="EDMCF" type="Button" parent="CenterContainer/Button Container" unique_id=447297005]
-layout_mode = 2
-text = "EDM counterfeit coins..."
-
-[node name="DbleCF" type="Button" parent="CenterContainer/Button Container" unique_id=790943090]
-layout_mode = 2
-text = "Doulbe counterfeit coins..."
-
-[node name="alter" type="Button" parent="CenterContainer/Button Container" unique_id=1952230999]
-layout_mode = 2
-text = "Alter coins..."
-
-[node name="goods" type="Button" parent="CenterContainer/Button Container" unique_id=770822881]
-layout_mode = 2
-text = "Make Goods..."
-
-[node name="buy_sheets" type="Button" parent="CenterContainer/Button Container" unique_id=40691707]
-layout_mode = 2
-text = "Buy Sheets..."
-
-[node name="buy_blanks" type="Button" parent="CenterContainer/Button Container" unique_id=41891874]
-layout_mode = 2
-text = "Buy Blanks..."
-
-[node name="donate" type="Button" parent="CenterContainer/Button Container" unique_id=871090425]
-layout_mode = 2
-text = "Donate..."
 
 [node name="Coins" type="Panel" parent="." unique_id=1970488315]
 visible = false
@@ -121,30 +88,6 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Day:
 1"
-horizontal_alignment = 1
-
-[node name="BlacksmithLoyalty" type="Label" parent="Stats" unique_id=1264336897]
-layout_mode = 2
-text = "Blacksmith Loyality:
-0.0"
-horizontal_alignment = 1
-
-[node name="Money" type="Label" parent="Stats" unique_id=30920861]
-layout_mode = 2
-text = "Money:
-0.0"
-horizontal_alignment = 1
-
-[node name="MinerLoyalty" type="Label" parent="Stats" unique_id=543130658]
-layout_mode = 2
-text = "Miner Loyalty:
-0.0"
-horizontal_alignment = 1
-
-[node name="MetalQuality" type="Label" parent="Stats" unique_id=2038689412]
-layout_mode = 2
-text = "Metal Quality:
-0.0"
 horizontal_alignment = 1
 
 [node name="CoinCount" type="HBoxContainer" parent="." unique_id=778856417]
@@ -228,7 +171,6 @@ theme = SubResource("Theme_idj7w")
 horizontal_alignment = 1
 
 [node name="InputBox" type="LineEdit" parent="User" unique_id=1142793623]
-visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -283,6 +225,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = -1.0
+offset_right = -2.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -304,16 +250,32 @@ grow_vertical = 2
 label_settings = SubResource("LabelSettings_r150o")
 horizontal_alignment = 1
 
-[connection signal="pressed" from="CenterContainer/Button Container/Coins" to="." method="_on_coins_pressed"]
-[connection signal="pressed" from="CenterContainer/Button Container/cutSheet" to="." method="cutting_sheets"]
-[connection signal="pressed" from="CenterContainer/Button Container/strikeCF" to="." method="strike_counterfeit_coins"]
-[connection signal="pressed" from="CenterContainer/Button Container/EDMCF" to="." method="edm_counterfeit_coins"]
-[connection signal="pressed" from="CenterContainer/Button Container/DbleCF" to="." method="double_counterfeit"]
-[connection signal="pressed" from="CenterContainer/Button Container/alter" to="." method="alter_coins"]
-[connection signal="pressed" from="CenterContainer/Button Container/goods" to="." method="make_goods"]
-[connection signal="pressed" from="CenterContainer/Button Container/buy_sheets" to="." method="buy_sheets"]
-[connection signal="pressed" from="CenterContainer/Button Container/buy_blanks" to="." method="buy_blanks"]
-[connection signal="pressed" from="CenterContainer/Button Container/donate" to="." method="donate"]
+[node name="Anvil" type="Sprite2D" parent="." unique_id=435165491]
+position = Vector2(263, 442)
+texture = ExtResource("2_kln2b")
+
+[node name="Edm" type="Sprite2D" parent="." unique_id=1020034631]
+position = Vector2(367, 447)
+texture = ExtResource("3_rgh2o")
+
+[node name="artist" parent="." unique_id=1484265610 instance=ExtResource("4_50glp")]
+position = Vector2(741, 205)
+
+[node name="blacksmith" parent="." unique_id=965881766 instance=ExtResource("5_vy5pj")]
+position = Vector2(828, 212)
+
+[node name="leader" parent="." unique_id=1174015265 instance=ExtResource("6_bmxlf")]
+position = Vector2(888, 201)
+
+[node name="sales_man" parent="." unique_id=1487488335 instance=ExtResource("7_4kpch")]
+position = Vector2(978, 202)
+
+[node name="tech" parent="." unique_id=872409916 instance=ExtResource("8_grg3l")]
+position = Vector2(1054, 193)
+
 [connection signal="pressed" from="Coins/VBoxContainer/Real" to="." method="_on_real_pressed"]
 [connection signal="pressed" from="Coins/VBoxContainer/Fake" to="." method="_on_fake_pressed"]
 [connection signal="pressed" from="User/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="artist/Button" to="." method="_on_button_pressed"]
+
+[editable path="artist"]

@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://degwlgpwv8gi2"]
+
+[ext_resource type="Texture2D" uid="uid://dx3rl8l5h1k1b" path="res://assets/char anims/tech guy/idle/techt idle1.png" id="1_2em1u"]
+[ext_resource type="Texture2D" uid="uid://cumtg67ccxc2b" path="res://assets/char anims/tech guy/idle/techt idle2.png" id="2_hv61y"]
+[ext_resource type="Texture2D" uid="uid://dxh00es2rhgcq" path="res://assets/char anims/tech guy/idle/techt idle3.png" id="3_v4xhf"]
+[ext_resource type="Texture2D" uid="uid://d31juqk6fik3q" path="res://assets/char anims/tech guy/idle/techt idle4.png" id="4_m3nvc"]
+[ext_resource type="Texture2D" uid="uid://bu2wq4rbbsman" path="res://assets/char anims/tech guy/idle/techt idle5.png" id="5_0njkv"]
+[ext_resource type="Texture2D" uid="uid://c7j1vwni5ybij" path="res://assets/char anims/tech guy/idle/techt idle6.png" id="6_54sq7"]
+[ext_resource type="Texture2D" uid="uid://fpfnsnoqrjnm" path="res://assets/char anims/tech guy/idle/techt idle7.png" id="7_cotef"]
+[ext_resource type="Texture2D" uid="uid://bwompk5der88l" path="res://assets/char anims/tech guy/idle/techt idle8.png" id="8_jm08w"]
+[ext_resource type="Texture2D" uid="uid://7vslyfaoafdg" path="res://assets/char anims/tech guy/idle/techt idle9.png" id="9_ke3rr"]
+[ext_resource type="Texture2D" uid="uid://dcnb46ni6ilkw" path="res://assets/char anims/tech guy/idle/techt idle10.png" id="10_epbcb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dwxkt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2em1u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_hv61y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v4xhf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_m3nvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0njkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_54sq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_cotef")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jm08w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ke3rr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_epbcb")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 7.0
+}]
+
+[node name="tech" type="Node2D" unique_id=1484265610]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=927366038]
+sprite_frames = SubResource("SpriteFrames_dwxkt")
+animation = &"new_animation"
+frame = 1
+frame_progress = 0.66866463
+
+[node name="Button" type="Button" parent="." unique_id=1232404125]
+offset_left = -15.0
+offset_top = -16.0
+offset_right = 15.0
+offset_bottom = 17.0

@@ -1,13 +1,16 @@
 extends Control
 
-var metalQuality := 10.0
-var blacksmithLoyalty := 10.0
-var minerLoyalty := 10.0
-var money := 100.00
-var time_left := 6
-var day := 1
-var confirmed := false
-var user_input := 0.0
+
+
+var char
+var leader
+var blacksmith
+var artist
+var tech
+var salesman
+
+
+
 var coins := {
 	"genuine": 0,
 	"cQ1": 0,
@@ -53,7 +56,6 @@ func double_counterfeit():
 	_update_UI()
 
 
-var new_goods_out:bool = false
 var goods := 0
 
 func alter_coins():
@@ -110,7 +112,7 @@ func trade(price, product_name:String, amnt, exp):
 	var fake_value = take_c1 * 1.5 + take_c2 * 1.0 + take_c3 * 0.5
 	var risk = clamp((fake_value * exp - take_g) / price, 0.0, 1.0)
 	if randf() < risk: sus += 1
-	money -= price
+	#money -= price
 	_update_UI()
 
 
@@ -135,78 +137,49 @@ func sell_goods():
 func _ready() -> void:
 	_update_UI()
 
+
+
+#TIME SYSTEM
+var actions:Array[Callable] = []
+#time of day
+var tod:int :
+		set (new):
+			tod = clamp(new, 0, 8)
+
+var day:int
+
+#conrta = contradict
+func assign_task(task,contras,character,eligs):
+	for item in eligs:
+		if char == item:
+			
+			actions.append(task)
+	for item in contras:
+		unassign_task(item)
+	
+
+
+
+
+func unassign_task(task):
+	for item in task:
+		actions.erase(task)
+
+
+
+func day_end():
+	pass
+
 func _update_UI():
-	metalQuality = snapped(clamp(metalQuality, 0.0, 100.0), 0.01)
-	blacksmithLoyalty = snapped(clamp(blacksmithLoyalty, 0.0, 100.0), 0.01)
-	minerLoyalty = snapped(clamp(minerLoyalty, 0.0, 100.0), 0.01)
-	money = snapped(max(money, 0), 0.01)
-	$Stats/Hour.text = "Hour:\n" + str(7 - time_left)
-	$Stats/Day.text = "Day:\n" + str(day)
-	$Stats/BlacksmithLoyalty.text = "Blacksmith Loyalty:\n" + str(blacksmithLoyalty)
-	$Stats/Money.text = "Money:\n£" + str(money)
-	$Stats/MinerLoyalty.text = "Miner Loyalty:\n" + str(minerLoyalty)
-	$Stats/MetalQuality.text = "Metal Quality:\n" + str(metalQuality)
-	$CoinCount/cQ1.text = "Coins (Quality 1):\n" + str(coins["cQ1"])
-	$CoinCount/cQ2.text = "Coins (Quality 2):\n" + str(coins["cQ2"])
-	$CoinCount/cQ3.text = "Coins (Quality 3):\n" + str(coins["cQ3"])
-	$CoinCount/Real.text = "Real Coins:\n" + str(coins["genuine"])
-	$CoinCount/Distributed.text = "Distributed Coins:\n" + str(distributedC)
-	$Materials/Sheets.text = "Sheets:\n" + str(sheets)
-	$Materials/Blanks.text = "Blanks:\n" + str(blanks)
+	if tod < 8:
+		tod += 1
+		for act in actions:
+			act.call()
+	elif tod == 8:
+		day_end()
 
-func _on_coins_pressed() -> void:
-	time_left -= 1
-	if time_left <= 0:
-		hour_end()
-		return
-	$Coins.show()
-	_update_UI()
 
-func _on_real_pressed() -> void:
-	coins["genuine"] += 1
-	blacksmithLoyalty -= 1.0
-	metalQuality += 1.0
-	money += 0.75
-	$Coins.hide()
-	_update_UI()
 
-func _on_fake_pressed() -> void:
-	coins["cQ" + str(randi_range(1,3))] += 1
-	blacksmithLoyalty += 1.0
-	metalQuality -= 1.0
-	money += 2
-	$Coins.hide()
-	_update_UI()
-
-func hour_end() -> void:
-	$User.show()
-	$User/Text.text = "How much do you pay your blacksmith?"
-	user_input = money + 1
-	while user_input > money and confirmed == false:
-		await $User/Confirm.pressed
-		user_input = $User/MoneyInput.value
-	confirmed = false
-	var fair_pay := money * 0.3
-	money -= user_input
-	blacksmithLoyalty += snapped((((user_input / fair_pay) - 1.0) * 3.0), 0.01)
-	_update_UI()
-	$User/Text.text = "And your miner?"
-	user_input = money + 1
-	while user_input >= money and confirmed == false:
-		await $User/Confirm.pressed
-		user_input = $User/MoneyInput.value
-	confirmed = false
-	fair_pay = money * 0.3
-	money -= user_input
-	minerLoyalty += snapped((((user_input / fair_pay) - 1.0) * 3.0), 0.01)
-	$User.hide()
-	time_left = 6
-	day += 1
-	fade()
-	_update_UI()
-
-func _on_confirm_pressed() -> void: 
-	if money - user_input >= 0: confirmed = true
 
 func fade() -> void:
 	while $FadeBox.color.a <= 0.9:
@@ -214,10 +187,14 @@ func fade() -> void:
 		await get_tree().process_frame
 	$FadeBox.color.a = 1.0
 	await get_tree().create_timer(1.0).timeout
-	$FadeBox/Label.text = "Day: " + str(day)
+	#$FadeBox/Label.text = "Day: " + str(day)
 	await get_tree().create_timer(1.0).timeout
 	$FadeBox/Label.text = ""
 	while $FadeBox.color.a >= 0.1:
 		$FadeBox.color.a = lerp($FadeBox.color.a, 0.0, 0.15)
 		await get_tree().process_frame
 	$FadeBox.color.a = 0.0
+
+
+func _on_button_pressed() -> void:
+	char = 3

@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://bq83j26mxnu5t"]
+
+[ext_resource type="Texture2D" uid="uid://6afrh0bw32wr" path="res://assets/char anims/black smiths/idle/black smith1.png" id="1_f8ast"]
+[ext_resource type="Texture2D" uid="uid://qoh28jidgy4t" path="res://assets/char anims/black smiths/idle/black smith2.png" id="2_6adbh"]
+[ext_resource type="Texture2D" uid="uid://bdh46vrmn1ved" path="res://assets/char anims/black smiths/idle/black smith3.png" id="3_6btc5"]
+[ext_resource type="Texture2D" uid="uid://ygyubloaygj8" path="res://assets/char anims/black smiths/idle/black smith4.png" id="4_fj1ib"]
+[ext_resource type="Texture2D" uid="uid://byrad1tw5xqvo" path="res://assets/char anims/black smiths/idle/black smith5.png" id="5_iujpy"]
+[ext_resource type="Texture2D" uid="uid://ctnpgaewcedru" path="res://assets/char anims/black smiths/idle/black smith6.png" id="6_28jam"]
+[ext_resource type="Texture2D" uid="uid://didv2laxayc63" path="res://assets/char anims/black smiths/idle/black smith7.png" id="7_0wq2w"]
+[ext_resource type="Texture2D" uid="uid://coym3qlqsd1ii" path="res://assets/char anims/black smiths/idle/black smith8.png" id="8_wg87r"]
+[ext_resource type="Texture2D" uid="uid://bruibnl3nc1ot" path="res://assets/char anims/black smiths/idle/black smith9.png" id="9_oo3ny"]
+[ext_resource type="Texture2D" uid="uid://dmpaq2jshd53p" path="res://assets/char anims/black smiths/idle/black smith10.png" id="10_e6bcr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dwxkt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_f8ast")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6adbh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6btc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fj1ib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_iujpy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_28jam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_0wq2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_wg87r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_oo3ny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_e6bcr")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 7.0
+}]
+
+[node name="blacksmith" type="Node2D" unique_id=1484265610]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=927366038]
+sprite_frames = SubResource("SpriteFrames_dwxkt")
+animation = &"new_animation"
+frame_progress = 0.24296261
+
+[node name="Button" type="Button" parent="." unique_id=1232404125]
+offset_left = -15.0
+offset_top = -16.0
+offset_right = 15.0
+offset_bottom = 17.0

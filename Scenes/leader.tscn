@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bop0h6arsinrr"]
+
+[ext_resource type="Texture2D" uid="uid://c0ofathte3vnm" path="res://assets/char anims/leader/idle/Player Idle 48x48.png" id="1_pkumc"]
+[ext_resource type="Texture2D" uid="uid://bgmjv1ufpq01i" path="res://assets/char anims/leader/idle/Player Idle 48x49.png" id="2_vyc57"]
+[ext_resource type="Texture2D" uid="uid://d0o8vh2pe255d" path="res://assets/char anims/leader/idle/Player Idle 48x50.png" id="3_sl4v2"]
+[ext_resource type="Texture2D" uid="uid://bu5ie2jfgktwq" path="res://assets/char anims/leader/idle/Player Idle 48x51.png" id="4_fvvxd"]
+[ext_resource type="Texture2D" uid="uid://dqtkq8y0r5yqy" path="res://assets/char anims/leader/idle/Player Idle 48x52.png" id="5_7nome"]
+[ext_resource type="Texture2D" uid="uid://cc3rujbuiag1" path="res://assets/char anims/leader/idle/Player Idle 48x53.png" id="6_a3gfo"]
+[ext_resource type="Texture2D" uid="uid://cr71g223y63xk" path="res://assets/char anims/leader/idle/Player Idle 48x54.png" id="7_yrdes"]
+[ext_resource type="Texture2D" uid="uid://1vjepg5a1ape" path="res://assets/char anims/leader/idle/Player Idle 48x55.png" id="8_q70qm"]
+[ext_resource type="Texture2D" uid="uid://djkrtdftublhw" path="res://assets/char anims/leader/idle/Player Idle 48x56.png" id="9_1u1bg"]
+[ext_resource type="Texture2D" uid="uid://bdhoihxnpf6cm" path="res://assets/char anims/leader/idle/Player Idle 48x57.png" id="10_qbpbl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dwxkt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pkumc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_vyc57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_sl4v2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fvvxd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7nome")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a3gfo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yrdes")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_q70qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_1u1bg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qbpbl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="leader" type="Node2D" unique_id=1484265610]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=927366038]
+sprite_frames = SubResource("SpriteFrames_dwxkt")
+frame_progress = 0.80173594
+
+[node name="Button" type="Button" parent="." unique_id=1232404125]
+offset_left = -15.0
+offset_top = -16.0
+offset_right = 15.0
+offset_bottom = 17.0

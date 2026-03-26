@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://c5im17riayd4y"]
+
+[ext_resource type="Texture2D" uid="uid://bbibjsp7b3o0t" path="res://assets/char anims/artist/idle/artist idle1.png" id="1_nm32s"]
+[ext_resource type="Texture2D" uid="uid://dgc4vlpudaywp" path="res://assets/char anims/artist/idle/artist idle2.png" id="2_1xis5"]
+[ext_resource type="Texture2D" uid="uid://b7kf2l0ndpljc" path="res://assets/char anims/artist/idle/artist idle3.png" id="3_tqrnu"]
+[ext_resource type="Texture2D" uid="uid://bss8v7klf2e1p" path="res://assets/char anims/artist/idle/artist idle4.png" id="4_oikke"]
+[ext_resource type="Texture2D" uid="uid://cfowqrjhwvx16" path="res://assets/char anims/artist/idle/artist idle5.png" id="5_2bj7j"]
+[ext_resource type="Texture2D" uid="uid://clw5il8fchbka" path="res://assets/char anims/artist/idle/artist idle6.png" id="6_yf4ta"]
+[ext_resource type="Texture2D" uid="uid://bx321gfecmoqj" path="res://assets/char anims/artist/idle/artist idle7.png" id="7_dpm1i"]
+[ext_resource type="Texture2D" uid="uid://drnntldo3nmhm" path="res://assets/char anims/artist/idle/artist idle8.png" id="8_usw5d"]
+[ext_resource type="Texture2D" uid="uid://cwrjy07u0ih7k" path="res://assets/char anims/artist/idle/artist idle9.png" id="9_bs74h"]
+[ext_resource type="Texture2D" uid="uid://bt6ib5aida6po" path="res://assets/char anims/artist/idle/artist idle10.png" id="10_j6p7m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dwxkt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nm32s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1xis5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_tqrnu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oikke")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2bj7j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yf4ta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dpm1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_usw5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_bs74h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_j6p7m")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 7.0
+}]
+
+[node name="artist" type="Node2D" unique_id=1484265610]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=927366038]
+sprite_frames = SubResource("SpriteFrames_dwxkt")
+animation = &"new_animation"
+frame_progress = 0.22981125
+
+[node name="Button" type="Button" parent="." unique_id=1232404125]
+offset_left = -15.0
+offset_top = -16.0
+offset_right = 15.0
+offset_bottom = 17.0
