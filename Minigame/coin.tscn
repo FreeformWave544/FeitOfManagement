@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bk5x0vd4to3bm"]
+
+[ext_resource type="Texture2D" uid="uid://dnto2f15e88ie" path="res://assets/coins/washing_ton_face.png" id="1_uvtpm"]
+[ext_resource type="Texture2D" uid="uid://d3mb1dglrptrg" path="res://assets/coins/faulty_washing_ton_coin3.png" id="2_1mc44"]
+
+[node name="Coin" type="Node2D" unique_id=1283582538]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=218459047]
+modulate = Color(0.3764706, 1, 1, 0.2901961)
+texture = ExtResource("1_uvtpm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=38062578]
+modulate = Color(1, 0, 1, 0.13333334)
+texture = ExtResource("2_1mc44")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1049091604]
+position = Vector2(-1, -4)
