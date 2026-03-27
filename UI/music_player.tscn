@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b7penk3dslfg1"]
+
+[ext_resource type="Script" uid="uid://2css6kwqaugr" path="res://UI/music_player.gd" id="1_war02"]
+[ext_resource type="AudioStream" uid="uid://bgl52uaw86jyu" path="res://assets/music/Second game.mp3" id="2_g7ker"]
+[ext_resource type="AudioStream" uid="uid://caywclncy0np2" path="res://assets/music/last one jam.mp3" id="3_v8hko"]
+[ext_resource type="AudioStream" uid="uid://b2512ri6ci3dp" path="res://assets/music/last one jam 2.mp3" id="4_eia7u"]
+[ext_resource type="AudioStream" uid="uid://cnh5needqad8p" path="res://assets/music/game jam 2 horror.mp3" id="5_mexcj"]
+
+[node name="MusicPlayer" type="Control" unique_id=70076373]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_war02")
+tracks = Array[AudioStreamMP3]([ExtResource("2_g7ker"), ExtResource("3_v8hko"), ExtResource("4_eia7u"), ExtResource("5_mexcj")])
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=274908899]
+volume_db = -20.0
+bus = &"Music"

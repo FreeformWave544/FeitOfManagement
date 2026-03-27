@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bgl52uaw86jyu"
+path="res://.godot/imported/Second game.mp3-c5a7d1e094006411c161b3e101d7acf8.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Second game.mp3"
+dest_files=["res://.godot/imported/Second game.mp3-c5a7d1e094006411c161b3e101d7acf8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
