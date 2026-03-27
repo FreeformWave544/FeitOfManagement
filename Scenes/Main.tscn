@@ -28,6 +28,20 @@ font_color = Color(1, 1, 0.5411765, 1)
 outline_size = 5
 outline_color = Color(0.6745098, 1, 1, 1)
 
+[sub_resource type="GDScript" id="GDScript_50glp"]
+script/source = "extends Label
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [node name="Main" type="Control" unique_id=1253290123]
 layout_mode = 3
 anchors_preset = 15
@@ -45,31 +59,6 @@ offset_bottom = 648.0
 [node name="Button Container" type="FlowContainer" parent="CenterContainer" unique_id=1676433335]
 layout_mode = 2
 alignment = 1
-
-[node name="Coins" type="Panel" parent="." unique_id=1970488315]
-visible = false
-layout_mode = 0
-offset_left = 326.0
-offset_top = 74.0
-offset_right = 826.0
-offset_bottom = 574.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Coins" unique_id=1051291516]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Real" type="Button" parent="Coins/VBoxContainer" unique_id=328613002]
-layout_mode = 2
-text = "Real Coin"
-
-[node name="Fake" type="Button" parent="Coins/VBoxContainer" unique_id=1577274035]
-layout_mode = 2
-text = "Fake Coin"
 
 [node name="Stats" type="HBoxContainer" parent="." unique_id=114771017]
 layout_mode = 0
@@ -147,7 +136,6 @@ text = "Blanks:
 horizontal_alignment = 1
 
 [node name="User" type="Control" parent="." unique_id=287298829]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -273,9 +261,74 @@ position = Vector2(978, 202)
 [node name="tech" parent="." unique_id=872409916 instance=ExtResource("8_grg3l")]
 position = Vector2(1054, 193)
 
-[connection signal="pressed" from="Coins/VBoxContainer/Real" to="." method="_on_real_pressed"]
-[connection signal="pressed" from="Coins/VBoxContainer/Fake" to="." method="_on_fake_pressed"]
+[node name="actions label" type="Label" parent="." unique_id=82289255]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 232.0
+offset_right = 318.0
+offset_bottom = 363.0
+script = SubResource("GDScript_50glp")
+
+[node name="char label" type="Label" parent="." unique_id=1613816307]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 159.0
+offset_right = 94.0
+offset_bottom = 182.0
+
+[node name="Button" type="Button" parent="." unique_id=1345817625]
+layout_mode = 0
+offset_left = 135.0
+offset_top = 135.0
+offset_right = 251.0
+offset_bottom = 173.0
+text = "assign donate"
+
+[node name="leader action" type="Label" parent="." unique_id=1691489708]
+layout_mode = 0
+offset_left = 873.0
+offset_top = 237.0
+offset_right = 913.0
+offset_bottom = 260.0
+
+[node name="black smith action" type="Label" parent="." unique_id=636546369]
+layout_mode = 0
+offset_left = 807.0
+offset_top = 245.0
+offset_right = 847.0
+offset_bottom = 268.0
+
+[node name="artist action" type="Label" parent="." unique_id=1675300987]
+layout_mode = 0
+offset_left = 720.0
+offset_top = 253.0
+offset_right = 760.0
+offset_bottom = 276.0
+
+[node name="sales man action" type="Label" parent="." unique_id=1126097609]
+layout_mode = 0
+offset_left = 965.0
+offset_top = 233.0
+offset_right = 1005.0
+offset_bottom = 256.0
+
+[node name="tech action" type="Label" parent="." unique_id=2033572166]
+layout_mode = 0
+offset_left = 1033.0
+offset_top = 241.0
+offset_right = 1073.0
+offset_bottom = 264.0
+
 [connection signal="pressed" from="User/Confirm" to="." method="_on_confirm_pressed"]
 [connection signal="pressed" from="artist/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="blacksmith/Button" to="." method="_on_blacksmith_button_pressed"]
+[connection signal="pressed" from="leader/Button" to="." method="_on_leader_button_pressed"]
+[connection signal="pressed" from="sales_man/Button" to="." method="_on_salesman_button_pressed"]
+[connection signal="pressed" from="tech/Button" to="." method="_on_tech_button_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_assign_donate_button_pressed"]
 
 [editable path="artist"]
+[editable path="blacksmith"]
+[editable path="leader"]
+[editable path="sales_man"]
+[editable path="tech"]

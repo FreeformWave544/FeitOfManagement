@@ -2,12 +2,14 @@ extends Control
 
 
 
-var char
-var leader
-var blacksmith
-var artist
-var tech
-var salesman
+var char :int = 0
+var character_actions = {
+	1:[],
+	2:[],
+	3:[],
+	4:[],
+	5:[]
+}
 
 
 
@@ -48,12 +50,6 @@ func edm_counterfeit_coins():
 	coins["cQ2"] += 20
 	_update_UI()
 
-
-func double_counterfeit():
-	blanks -= 30
-	coins["cQ2"] += 10
-	coins["cQ1"] += 20
-	_update_UI()
 
 
 var goods := 0
@@ -123,7 +119,7 @@ func buy_blanks():
 	trade(7,"blanks", 10, 1)
 
 func donate():
-	trade(50, "sus", -1, 1)
+	trade(50, "sus", -1, 5)
 
 func sell_goods():
 	goods -= 3
@@ -139,8 +135,32 @@ func _ready() -> void:
 
 
 
+@onready var char_label: Label = $"char label"
+@onready var actions_label: Label = $"actions label"
+@onready var leader_action: Label = $"leader action"
+@onready var black_smith_action: Label = $"black smith action"
+@onready var artist_action: Label = $"artist action"
+@onready var sales_man_action: Label = $"sales man action"
+@onready var tech_action: Label = $"tech action"
+
+
+
+func _process(delta: float) -> void:
+	actions_label.text = ",".join(actions)
+	char_label.text = str(char)
+	leader_action.text = str(character_actions[1])
+	black_smith_action.text = str(character_actions[2])
+	artist_action.text = str(character_actions[3])
+	sales_man_action.text = str(character_actions[4])
+	tech_action.text = str(character_actions[5])
+
+
+
+
+
+
 #TIME SYSTEM
-var actions:Array[Callable] = []
+var actions:Array[Callable]
 #time of day
 var tod:int :
 		set (new):
@@ -148,22 +168,23 @@ var tod:int :
 
 var day:int
 
-#conrta = contradict
-func assign_task(task,contras,character,eligs):
+#conrta = contradict elig = eligable
+func assign_task(task,contras:Array,character,eligs):
+	unassign_task(actions, contras)
+	unassign_task(character_actions, contras)
 	for item in eligs:
-		if char == item:
-			
+		if character == item:
 			actions.append(task)
+			character_actions[char].append(task)
+
+
+
+
+
+func unassign_task(aray, contras):
 	for item in contras:
-		unassign_task(item)
-	
-
-
-
-
-func unassign_task(task):
-	for item in task:
-		actions.erase(task)
+		aray.erase(item)
+	#pass
 
 
 
@@ -196,5 +217,37 @@ func fade() -> void:
 	$FadeBox.color.a = 0.0
 
 
+
+
+
+
+
+
+
+
+
 func _on_button_pressed() -> void:
 	char = 3
+
+
+func _on_blacksmith_button_pressed() -> void:
+	char = 2
+
+
+func _on_leader_button_pressed() -> void:
+	char = 1
+
+
+
+func _on_salesman_button_pressed() -> void:
+	char = 4
+
+
+func _on_tech_button_pressed() -> void:
+	char = 5
+
+
+var donate_contras = [donate]
+var donate_eligs = [3,4]
+func _on_assign_donate_button_pressed() -> void:
+	assign_task(donate,donate_contras,char,donate_eligs)
