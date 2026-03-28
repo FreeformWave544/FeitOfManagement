@@ -12,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0xs50")
+targetScore = 3
 
 [node name="Real" type="Node2D" parent="." unique_id=1283582538]
 position = Vector2(768, 324)

@@ -13,4 +13,5 @@ func _ready() -> void:
 		$ProgressBar.value += randf_range(7.5, 10.0)
 		if $ProgressBar.value == 100.0:
 			break
+	get_parent().coins["genuine"] += 3
 	queue_free()
