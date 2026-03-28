@@ -2,6 +2,23 @@
 
 [ext_resource type="Script" uid="uid://b7s2ec5r1nklj" path="res://UI/main_menu.gd" id="1_uahxu"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uahxu"]
+noise_type = 2
+frequency = 0.0075
+fractal_type = 0
+cellular_distance_function = 2
+cellular_jitter = 50.0
+cellular_return_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uahxu"]
+width = 1152
+height = 648
+noise = SubResource("FastNoiseLite_uahxu")
+seamless = true
+in_3d_space = true
+as_normal_map = true
+bump_strength = 24.0
+
 [sub_resource type="LabelSettings" id="LabelSettings_b37jj"]
 font_size = 64
 font_color = Color(1, 1, 0.4392157, 1)
@@ -43,6 +60,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel" unique_id=1884582481]
+texture = SubResource("NoiseTexture2D_uahxu")
+centered = false
 
 [node name="TITLE" type="Label" parent="Panel" unique_id=1247478866]
 layout_mode = 1
