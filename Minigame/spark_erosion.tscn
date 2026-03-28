@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://rdldodbojhpl"]
+
+[ext_resource type="Texture2D" path="res://assets/objects/white.png" id="1_dr73v"]
+[ext_resource type="Script" path="res://Minigame/spark_erosion.gd" id="1_uc15a"]
+[ext_resource type="Texture2D" path="res://assets/objects/purple.png" id="3_04mcn"]
+[ext_resource type="Texture2D" uid="uid://dx3rl8l5h1k1b" path="res://assets/char anims/tech guy/idle/techt idle1.png" id="4_pywq2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uc15a"]
+size = Vector2(3.1147575, 1.8639812)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dc4hs"]
+size = Vector2(271, 181)
+
+[node name="spark erosion" type="Node2D" unique_id=2027886066]
+script = ExtResource("1_uc15a")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=795328137]
+position = Vector2(354.5, 329.99997)
+scale = Vector2(27.300003, 60.2)
+texture = ExtResource("1_dr73v")
+
+[node name="Purple" type="Sprite2D" parent="." unique_id=1778910036]
+position = Vector2(396, 611)
+scale = Vector2(6.1, 11)
+texture = ExtResource("3_04mcn")
+offset = Vector2(7.6293945e-06, -5.048565)
+
+[node name="Node2D" type="Area2D" parent="Purple" unique_id=1051063204]
+position = Vector2(0.32786402, -9.818875)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Purple/Node2D" unique_id=395427714]
+position = Vector2(3.8146973e-06, 0.00069355965)
+shape = SubResource("RectangleShape2D_uc15a")
+
+[node name="tech guy" type="Sprite2D" parent="." unique_id=1948409083]
+position = Vector2(800, 500)
+scale = Vector2(40, 40)
+texture = ExtResource("4_pywq2")
+flip_h = true
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="tech guy" unique_id=1697165629]
+position = Vector2(-19.824999, -22.349998)
+scale = Vector2(0.024999999, 0.024999999)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tech guy/Area2D" unique_id=893467558]
+position = Vector2(482, 537)
+shape = SubResource("RectangleShape2D_dc4hs")
+
+[node name="Button" type="Button" parent="tech guy" unique_id=1106177735]
+offset_left = -7.825
+offset_top = -14.65
+offset_right = 7.449994
+offset_bottom = -2.3499966
+
+[connection signal="pressed" from="tech guy/Button" to="." method="_on_button_pressed"]
