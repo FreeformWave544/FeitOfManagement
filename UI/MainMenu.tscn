@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://c37ao0ki4pnvw"]
 
+[ext_resource type="FontFile" uid="uid://dxupd0hsjj2cd" path="res://assets/font/Delius/Delius-Regular.ttf" id="1_b37jj"]
 [ext_resource type="Script" uid="uid://b7s2ec5r1nklj" path="res://UI/main_menu.gd" id="1_uahxu"]
+
+[sub_resource type="Theme" id="Theme_8aown"]
+default_font = ExtResource("1_b37jj")
 
 [sub_resource type="Gradient" id="Gradient_uahxu"]
 colors = PackedColorArray(1, 0, 0.7176471, 1, 0, 0, 1, 1)
@@ -55,6 +59,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_8aown")
 script = ExtResource("1_uahxu")
 
 [node name="Panel" type="Panel" parent="." unique_id=1736059570]

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://d3qljo7nuqolq"]
 
+[ext_resource type="FontFile" uid="uid://dxupd0hsjj2cd" path="res://assets/font/Delius/Delius-Regular.ttf" id="1_bmxlf"]
 [ext_resource type="Script" uid="uid://ddp1nvv2vsedk" path="res://Scenes/main.gd" id="1_r150o"]
 [ext_resource type="Texture2D" uid="uid://dg1kdrr7hu8i7" path="res://assets/objects/anvil.png" id="2_kln2b"]
 [ext_resource type="Texture2D" uid="uid://ckwbjaq1107wm" path="res://assets/objects/all tails btw.png" id="2_vy5pj"]
@@ -9,6 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bop0h6arsinrr" path="res://Scenes/leader.tscn" id="6_bmxlf"]
 [ext_resource type="PackedScene" uid="uid://cvajp6ld1a2ux" path="res://Scenes/sales_man.tscn" id="7_4kpch"]
 [ext_resource type="PackedScene" uid="uid://degwlgpwv8gi2" path="res://Scenes/tech.tscn" id="8_grg3l"]
+
+[sub_resource type="Theme" id="Theme_4kpch"]
+default_font = ExtResource("1_bmxlf")
 
 [sub_resource type="LabelSettings" id="LabelSettings_r150o"]
 font_size = 128
@@ -37,6 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_4kpch")
 script = ExtResource("1_r150o")
 
 [node name="AllTailsBtw" type="Sprite2D" parent="." unique_id=1377799318]
@@ -54,15 +59,6 @@ position = Vector2(561, 321.99982)
 rotation = 3.1415927
 scale = Vector2(0.6028646, 0.08703707)
 texture = ExtResource("2_vy5pj")
-
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1173887914]
-layout_mode = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-
-[node name="Button Container" type="FlowContainer" parent="CenterContainer" unique_id=1676433335]
-layout_mode = 2
-alignment = 1
 
 [node name="Stats" type="HBoxContainer" parent="." unique_id=114771017]
 layout_mode = 0
@@ -123,8 +119,9 @@ horizontal_alignment = 1
 
 [node name="Materials" type="VBoxContainer" parent="." unique_id=480590929]
 layout_mode = 0
+offset_top = 16.0
 offset_right = 139.0
-offset_bottom = 309.0
+offset_bottom = 325.0
 theme_override_constants/separation = 16
 
 [node name="Sheets" type="Label" parent="Materials" unique_id=475825541]
