@@ -2,25 +2,13 @@
 
 [ext_resource type="Script" uid="uid://ddp1nvv2vsedk" path="res://Scenes/main.gd" id="1_r150o"]
 [ext_resource type="Texture2D" uid="uid://dg1kdrr7hu8i7" path="res://assets/objects/anvil.png" id="2_kln2b"]
+[ext_resource type="Texture2D" uid="uid://ckwbjaq1107wm" path="res://assets/objects/all tails btw.png" id="2_vy5pj"]
 [ext_resource type="Texture2D" uid="uid://bg0prjf3lnkuu" path="res://assets/objects/edm.png" id="3_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://c5im17riayd4y" path="res://Scenes/artist.tscn" id="4_50glp"]
 [ext_resource type="PackedScene" uid="uid://bq83j26mxnu5t" path="res://Scenes/blacksmith.tscn" id="5_vy5pj"]
 [ext_resource type="PackedScene" uid="uid://bop0h6arsinrr" path="res://Scenes/leader.tscn" id="6_bmxlf"]
 [ext_resource type="PackedScene" uid="uid://cvajp6ld1a2ux" path="res://Scenes/sales_man.tscn" id="7_4kpch"]
 [ext_resource type="PackedScene" uid="uid://degwlgpwv8gi2" path="res://Scenes/tech.tscn" id="8_grg3l"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r150o"]
-border_width_left = 300
-border_width_right = 300
-border_color = Color(0.8, 0.8, 0.8, 0)
-border_blend = true
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_detail = 20
-expand_margin_top = 10.0
-
-[sub_resource type="Theme" id="Theme_idj7w"]
-Label/styles/normal = SubResource("StyleBoxFlat_r150o")
 
 [sub_resource type="LabelSettings" id="LabelSettings_r150o"]
 font_size = 128
@@ -50,6 +38,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r150o")
+
+[node name="AllTailsBtw" type="Sprite2D" parent="." unique_id=1377799318]
+position = Vector2(575, 326)
+scale = Vector2(0.59583336, 0.5962963)
+texture = ExtResource("2_vy5pj")
+
+[node name="AllTailsBtw2" type="Sprite2D" parent="." unique_id=178380313]
+position = Vector2(577.25, 646)
+scale = Vector2(0.6028646, 0.08703707)
+texture = ExtResource("2_vy5pj")
+
+[node name="AllTailsBtw3" type="Sprite2D" parent="." unique_id=1358607374]
+position = Vector2(561, 321.99982)
+rotation = 3.1415927
+scale = Vector2(0.6028646, 0.08703707)
+texture = ExtResource("2_vy5pj")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1173887914]
 layout_mode = 0
@@ -135,80 +139,18 @@ text = "Blanks:
 0"
 horizontal_alignment = 1
 
-[node name="User" type="Control" parent="." unique_id=287298829]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=833049049]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 490.0
+offset_right = 141.0
+offset_bottom = 602.0
 
-[node name="Text" type="Label" parent="User" unique_id=927823323]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -576.0
-offset_top = -127.0
-offset_right = 576.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = SubResource("Theme_idj7w")
-horizontal_alignment = 1
+[node name="sus level" type="Label" parent="VBoxContainer" unique_id=692989096]
+layout_mode = 2
 
-[node name="InputBox" type="LineEdit" parent="User" unique_id=1142793623]
-visible = false
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -576.0
-offset_top = -168.0
-offset_right = 576.0
-offset_bottom = -137.0
-grow_horizontal = 2
-grow_vertical = 0
-placeholder_text = "Tell me stuff."
-alignment = 1
-
-[node name="MoneyInput" type="SpinBox" parent="User" unique_id=1267766247]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -43.25
-offset_top = -168.0
-offset_right = 43.25
-offset_bottom = -137.0
-grow_horizontal = 2
-grow_vertical = 0
-step = 0.01
-allow_greater = true
-alignment = 1
-prefix = "£"
-custom_arrow_step = 1.0
-select_all_on_focus = true
-
-[node name="Confirm" type="Button" parent="User" unique_id=1793984258]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -78.0
-offset_top = -168.0
-offset_bottom = -137.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Confirm?"
+[node name="reputation level" type="Label" parent="VBoxContainer" unique_id=1876595060]
+layout_mode = 2
 
 [node name="FadeBox" type="ColorRect" parent="." unique_id=438942413]
 layout_mode = 1
@@ -241,29 +183,42 @@ label_settings = SubResource("LabelSettings_r150o")
 horizontal_alignment = 1
 
 [node name="Anvil" type="Sprite2D" parent="." unique_id=435165491]
-position = Vector2(263, 442)
+position = Vector2(297, 515)
+scale = Vector2(4, 4)
 texture = ExtResource("2_kln2b")
 
 [node name="Edm" type="Sprite2D" parent="." unique_id=1020034631]
-position = Vector2(367, 447)
+position = Vector2(744, 540)
+scale = Vector2(4, 4)
 texture = ExtResource("3_rgh2o")
 
 [node name="artist" parent="." unique_id=1484265610 instance=ExtResource("4_50glp")]
-position = Vector2(741, 205)
+position = Vector2(1074, 407)
+metadata/_edit_group_ = true
 
 [node name="blacksmith" parent="." unique_id=965881766 instance=ExtResource("5_vy5pj")]
-position = Vector2(828, 212)
+position = Vector2(1072, 333)
+metadata/_edit_group_ = true
 
 [node name="leader" parent="." unique_id=1174015265 instance=ExtResource("6_bmxlf")]
-position = Vector2(888, 201)
+position = Vector2(1352, 190)
+scale = Vector2(4, 4)
+metadata/_edit_group_ = true
 
 [node name="sales_man" parent="." unique_id=1487488335 instance=ExtResource("7_4kpch")]
-position = Vector2(978, 202)
+position = Vector2(1074, 469)
+metadata/_edit_group_ = true
 
 [node name="tech" parent="." unique_id=872409916 instance=ExtResource("8_grg3l")]
-position = Vector2(1054, 193)
+position = Vector2(1081, 545)
+metadata/_edit_group_ = true
 
-[node name="actions label" type="Label" parent="." unique_id=82289255]
+[node name="debug labels" type="Control" parent="." unique_id=157324631]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="actions label" type="Label" parent="debug labels" unique_id=82289255]
 layout_mode = 0
 offset_left = 31.0
 offset_top = 232.0
@@ -271,63 +226,148 @@ offset_right = 318.0
 offset_bottom = 363.0
 script = SubResource("GDScript_50glp")
 
-[node name="char label" type="Label" parent="." unique_id=1613816307]
+[node name="char label" type="Label" parent="debug labels" unique_id=1613816307]
 layout_mode = 0
 offset_left = 54.0
 offset_top = 159.0
 offset_right = 94.0
 offset_bottom = 182.0
 
-[node name="Button" type="Button" parent="." unique_id=1345817625]
+[node name="leader action" type="Label" parent="debug labels" unique_id=1691489708]
 layout_mode = 0
-offset_left = 135.0
-offset_top = 135.0
-offset_right = 251.0
-offset_bottom = 173.0
-text = "assign donate"
+offset_left = 918.0
+offset_top = 265.0
+offset_right = 958.0
+offset_bottom = 288.0
 
-[node name="leader action" type="Label" parent="." unique_id=1691489708]
+[node name="black smith action" type="Label" parent="debug labels" unique_id=636546369]
 layout_mode = 0
-offset_left = 873.0
-offset_top = 237.0
-offset_right = 913.0
-offset_bottom = 260.0
+offset_left = 961.0
+offset_top = 320.0
+offset_right = 1001.0
+offset_bottom = 343.0
 
-[node name="black smith action" type="Label" parent="." unique_id=636546369]
+[node name="artist action" type="Label" parent="debug labels" unique_id=1675300987]
 layout_mode = 0
-offset_left = 807.0
-offset_top = 245.0
-offset_right = 847.0
-offset_bottom = 268.0
+offset_left = 981.0
+offset_top = 398.0
+offset_right = 1021.0
+offset_bottom = 421.0
 
-[node name="artist action" type="Label" parent="." unique_id=1675300987]
+[node name="sales man action" type="Label" parent="debug labels" unique_id=1126097609]
 layout_mode = 0
-offset_left = 720.0
-offset_top = 253.0
-offset_right = 760.0
-offset_bottom = 276.0
+offset_left = 967.0
+offset_top = 462.0
+offset_right = 1007.0
+offset_bottom = 485.0
 
-[node name="sales man action" type="Label" parent="." unique_id=1126097609]
+[node name="tech action" type="Label" parent="debug labels" unique_id=2033572166]
 layout_mode = 0
-offset_left = 965.0
-offset_top = 233.0
-offset_right = 1005.0
-offset_bottom = 256.0
+offset_left = 956.0
+offset_top = 541.0
+offset_right = 996.0
+offset_bottom = 564.0
 
-[node name="tech action" type="Label" parent="." unique_id=2033572166]
+[node name="action buttons" type="Control" parent="." unique_id=412513953]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="action buttons" unique_id=1345817625]
 layout_mode = 0
-offset_left = 1033.0
-offset_top = 241.0
-offset_right = 1073.0
-offset_bottom = 264.0
+offset_left = 320.0
+offset_top = 161.0
+offset_right = 468.0
+offset_bottom = 199.0
+text = "donate to the arts"
 
-[connection signal="pressed" from="User/Confirm" to="." method="_on_confirm_pressed"]
+[node name="cut sheets" type="Button" parent="action buttons" unique_id=594308599]
+layout_mode = 0
+offset_left = 466.0
+offset_top = 434.0
+offset_right = 644.0
+offset_bottom = 465.0
+text = "cut sheets into blanks"
+
+[node name="strike counterfeit" type="Button" parent="action buttons" unique_id=1426195259]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 495.0
+offset_right = 642.0
+offset_bottom = 526.0
+text = "strike counterfeit coins"
+
+[node name="spark erode coins" type="Button" parent="action buttons" unique_id=1979995659]
+layout_mode = 0
+offset_left = 694.0
+offset_top = 433.0
+offset_right = 899.0
+offset_bottom = 470.0
+text = "make spark erosion coins"
+
+[node name="alter coins" type="Button" parent="action buttons" unique_id=1763703885]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 487.0
+offset_right = 386.0
+offset_bottom = 518.0
+text = "alter coins into goods"
+
+[node name="make goods" type="Button" parent="action buttons" unique_id=1635548680]
+layout_mode = 0
+offset_left = 273.0
+offset_top = 436.0
+offset_right = 375.0
+offset_bottom = 467.0
+text = "make goods"
+
+[node name="sell goods" type="Button" parent="action buttons" unique_id=508606193]
+layout_mode = 0
+offset_left = 343.0
+offset_top = 117.0
+offset_right = 428.0
+offset_bottom = 148.0
+text = "sell goods"
+
+[node name="buy sheets" type="Button" parent="action buttons" unique_id=940194552]
+layout_mode = 0
+offset_left = 719.0
+offset_top = 166.0
+offset_right = 811.0
+offset_bottom = 197.0
+text = "buy sheets"
+
+[node name="buy blanks" type="Button" parent="action buttons" unique_id=652147977]
+layout_mode = 0
+offset_left = 722.0
+offset_top = 121.0
+offset_right = 814.0
+offset_bottom = 152.0
+text = "buy blanks"
+
+[node name="pass time" type="Button" parent="action buttons" unique_id=874951350]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 38.0
+offset_right = 144.0
+offset_bottom = 46.0
+text = "end hour"
+
 [connection signal="pressed" from="artist/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="blacksmith/Button" to="." method="_on_blacksmith_button_pressed"]
 [connection signal="pressed" from="leader/Button" to="." method="_on_leader_button_pressed"]
 [connection signal="pressed" from="sales_man/Button" to="." method="_on_salesman_button_pressed"]
 [connection signal="pressed" from="tech/Button" to="." method="_on_tech_button_pressed"]
-[connection signal="pressed" from="Button" to="." method="_on_assign_donate_button_pressed"]
+[connection signal="pressed" from="action buttons/Button" to="." method="_on_assign_donate_button_pressed"]
+[connection signal="pressed" from="action buttons/cut sheets" to="." method="_on_cut_sheets_pressed"]
+[connection signal="pressed" from="action buttons/strike counterfeit" to="." method="_on_strike_counterfeit_pressed"]
+[connection signal="pressed" from="action buttons/spark erode coins" to="." method="_on_spark_erode_coins_pressed"]
+[connection signal="pressed" from="action buttons/alter coins" to="." method="_on_alter_coins_pressed"]
+[connection signal="pressed" from="action buttons/make goods" to="." method="_on_make_goods_pressed"]
+[connection signal="pressed" from="action buttons/sell goods" to="." method="_on_sell_goods_pressed"]
+[connection signal="pressed" from="action buttons/buy sheets" to="." method="_on_buy_sheets_pressed"]
+[connection signal="pressed" from="action buttons/buy blanks" to="." method="_on_buy_blanks_pressed"]
+[connection signal="pressed" from="action buttons/pass time" to="." method="_on_pass_time_pressed"]
 
 [editable path="artist"]
 [editable path="blacksmith"]
