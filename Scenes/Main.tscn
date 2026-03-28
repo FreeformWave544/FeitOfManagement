@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://dxupd0hsjj2cd" path="res://assets/font/Delius/Delius-Regular.ttf" id="1_bmxlf"]
 [ext_resource type="Script" uid="uid://ddp1nvv2vsedk" path="res://Scenes/main.gd" id="1_r150o"]
 [ext_resource type="Texture2D" uid="uid://dg1kdrr7hu8i7" path="res://assets/objects/anvil.png" id="2_kln2b"]
-[ext_resource type="Texture2D" uid="uid://ckwbjaq1107wm" path="res://assets/objects/all tails btw.png" id="2_vy5pj"]
+[ext_resource type="Texture2D" uid="uid://dmauoq4ff34d2" path="res://assets/objects/background.png" id="3_bmxlf"]
 [ext_resource type="Texture2D" uid="uid://bg0prjf3lnkuu" path="res://assets/objects/edm.png" id="3_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://c5im17riayd4y" path="res://Scenes/artist.tscn" id="4_50glp"]
 [ext_resource type="PackedScene" uid="uid://bq83j26mxnu5t" path="res://Scenes/blacksmith.tscn" id="5_vy5pj"]
@@ -44,21 +44,10 @@ grow_vertical = 2
 theme = SubResource("Theme_4kpch")
 script = ExtResource("1_r150o")
 
-[node name="AllTailsBtw" type="Sprite2D" parent="." unique_id=1377799318]
-position = Vector2(575, 326)
-scale = Vector2(0.59583336, 0.5962963)
-texture = ExtResource("2_vy5pj")
-
-[node name="AllTailsBtw2" type="Sprite2D" parent="." unique_id=178380313]
-position = Vector2(577.25, 646)
-scale = Vector2(0.6028646, 0.08703707)
-texture = ExtResource("2_vy5pj")
-
-[node name="AllTailsBtw3" type="Sprite2D" parent="." unique_id=1358607374]
-position = Vector2(561, 321.99982)
-rotation = 3.1415927
-scale = Vector2(0.6028646, 0.08703707)
-texture = ExtResource("2_vy5pj")
+[node name="Background" type="Sprite2D" parent="." unique_id=1998056020]
+position = Vector2(575.99994, 324)
+scale = Vector2(9, 9)
+texture = ExtResource("3_bmxlf")
 
 [node name="Stats" type="HBoxContainer" parent="." unique_id=114771017]
 layout_mode = 0
