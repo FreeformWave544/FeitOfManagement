@@ -13,4 +13,4 @@ func _ready() -> void:
 		$ProgressBar.value += randf_range(7.5, 10.0)
 		if $ProgressBar.value == 100.0:
 			break
-	get_tree().change_scene_to_file("res://Scenes/Main.tscn")
+	queue_free()

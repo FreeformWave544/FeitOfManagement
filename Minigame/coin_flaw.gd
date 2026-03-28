@@ -49,7 +49,7 @@ func fade() -> void:
 	$FadeBox.color.a = 1.0
 	await get_tree().create_timer(0.5).timeout
 	won = newCoin() if score < targetScore else true
-	if won: get_tree().change_scene_to_file("res://Scenes/Main.tscn") ; return
+	if won: queue_free() ; return
 	while $FadeBox.color.a >= 0.1:
 		$FadeBox.color.a = lerp($FadeBox.color.a, 0.0, 0.15)
 		await get_tree().process_frame

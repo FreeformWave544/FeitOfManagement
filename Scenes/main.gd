@@ -219,7 +219,6 @@ func assign_task(task,contras:Array,character,eligs):
 				guy.scale = lerp(guy.scale, Vector2(4.0, 4.0), 0.1)
 				await get_tree().process_frame
 			guy.scale = Vector2(4.0, 4.0)
-			print(task)
 			var targetPos := Vector2($"action buttons".find_child(task).global_position.x + ($"action buttons".find_child(task).size.x / 2), 530.0)
 			guy.position.y = 530.0
 			while abs(guy.position.x - targetPos.x) > 1:
@@ -236,7 +235,7 @@ func unassign_task(aray, contras):
 
 
 func lose():
-	pass
+	get_tree().change_scene_to_file("res://UI/MainMenu.tscn")
 
 var target: int = day * 5
 
@@ -258,9 +257,8 @@ func time_pass():
 		character_actions[item] = nothing()
 	
 	actions = []
-
-
-
+	$Stats/Hour.text = str(tod)
+	add_child(load(["res://Minigame/CoinFlaw.tscn", "res://Minigame/wackamole.tscn"].pick_random()).instantiate())
 
 func fade() -> void:
 	while $FadeBox.color.a <= 0.9:
@@ -379,13 +377,3 @@ func _on_buy_sheets_pressed() -> void:
 
 func _on_buy_blanks_pressed() -> void:
 	assign_task("buy_blanks", trade_contras, char, trade_eligs)
-
-
-
-
-
-
-
-
-func _on_pass_time_pressed() -> void:
-	time_pass()
