@@ -196,24 +196,40 @@ texture = ExtResource("3_rgh2o")
 position = Vector2(1074, 407)
 metadata/_edit_group_ = true
 
+[node name="Button" parent="artist" index="1" unique_id=1232404125]
+flat = false
+
 [node name="blacksmith" parent="." unique_id=965881766 instance=ExtResource("5_vy5pj")]
 position = Vector2(1072, 333)
 metadata/_edit_group_ = true
+
+[node name="Button" parent="blacksmith" index="1" unique_id=1232404125]
+flat = false
 
 [node name="leader" parent="." unique_id=1174015265 instance=ExtResource("6_bmxlf")]
 position = Vector2(1352, 190)
 scale = Vector2(4, 4)
 metadata/_edit_group_ = true
 
+[node name="Button" parent="leader" index="1" unique_id=1232404125]
+flat = false
+
 [node name="sales_man" parent="." unique_id=1487488335 instance=ExtResource("7_4kpch")]
 position = Vector2(1074, 469)
 metadata/_edit_group_ = true
+
+[node name="Button" parent="sales_man" index="1" unique_id=1232404125]
+flat = false
 
 [node name="tech" parent="." unique_id=872409916 instance=ExtResource("8_grg3l")]
 position = Vector2(1081, 545)
 metadata/_edit_group_ = true
 
+[node name="Button" parent="tech" index="1" unique_id=1232404125]
+flat = false
+
 [node name="debug labels" type="Control" parent="." unique_id=157324631]
+visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -273,7 +289,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Button" type="Button" parent="action buttons" unique_id=1345817625]
+[node name="donate" type="Button" parent="action buttons" unique_id=1345817625]
 layout_mode = 0
 offset_left = 320.0
 offset_top = 161.0
@@ -289,7 +305,7 @@ offset_right = 644.0
 offset_bottom = 465.0
 text = "cut sheets into blanks"
 
-[node name="strike counterfeit" type="Button" parent="action buttons" unique_id=1426195259]
+[node name="strike_counterfeit_coins" type="Button" parent="action buttons" unique_id=1426195259]
 layout_mode = 0
 offset_left = 455.0
 offset_top = 495.0
@@ -305,7 +321,7 @@ offset_right = 899.0
 offset_bottom = 470.0
 text = "make spark erosion coins"
 
-[node name="alter coins" type="Button" parent="action buttons" unique_id=1763703885]
+[node name="alter_coins" type="Button" parent="action buttons" unique_id=1763703885]
 layout_mode = 0
 offset_left = 212.0
 offset_top = 487.0
@@ -313,7 +329,7 @@ offset_right = 386.0
 offset_bottom = 518.0
 text = "alter coins into goods"
 
-[node name="make goods" type="Button" parent="action buttons" unique_id=1635548680]
+[node name="make_goods" type="Button" parent="action buttons" unique_id=1635548680]
 layout_mode = 0
 offset_left = 273.0
 offset_top = 436.0
@@ -321,7 +337,7 @@ offset_right = 375.0
 offset_bottom = 467.0
 text = "make goods"
 
-[node name="sell goods" type="Button" parent="action buttons" unique_id=508606193]
+[node name="sell_goods" type="Button" parent="action buttons" unique_id=508606193]
 layout_mode = 0
 offset_left = 343.0
 offset_top = 117.0
@@ -329,7 +345,7 @@ offset_right = 428.0
 offset_bottom = 148.0
 text = "sell goods"
 
-[node name="buy sheets" type="Button" parent="action buttons" unique_id=940194552]
+[node name="buy_sheets" type="Button" parent="action buttons" unique_id=940194552]
 layout_mode = 0
 offset_left = 719.0
 offset_top = 166.0
@@ -337,7 +353,7 @@ offset_right = 811.0
 offset_bottom = 197.0
 text = "buy sheets"
 
-[node name="buy blanks" type="Button" parent="action buttons" unique_id=652147977]
+[node name="buy_blanks" type="Button" parent="action buttons" unique_id=652147977]
 layout_mode = 0
 offset_left = 722.0
 offset_top = 121.0
@@ -358,15 +374,15 @@ text = "end hour"
 [connection signal="pressed" from="leader/Button" to="." method="_on_leader_button_pressed"]
 [connection signal="pressed" from="sales_man/Button" to="." method="_on_salesman_button_pressed"]
 [connection signal="pressed" from="tech/Button" to="." method="_on_tech_button_pressed"]
-[connection signal="pressed" from="action buttons/Button" to="." method="_on_assign_donate_button_pressed"]
+[connection signal="pressed" from="action buttons/donate" to="." method="_on_assign_donate_button_pressed"]
 [connection signal="pressed" from="action buttons/cut sheets" to="." method="_on_cut_sheets_pressed"]
-[connection signal="pressed" from="action buttons/strike counterfeit" to="." method="_on_strike_counterfeit_pressed"]
+[connection signal="pressed" from="action buttons/strike_counterfeit_coins" to="." method="_on_strike_counterfeit_pressed"]
 [connection signal="pressed" from="action buttons/spark erode coins" to="." method="_on_spark_erode_coins_pressed"]
-[connection signal="pressed" from="action buttons/alter coins" to="." method="_on_alter_coins_pressed"]
-[connection signal="pressed" from="action buttons/make goods" to="." method="_on_make_goods_pressed"]
-[connection signal="pressed" from="action buttons/sell goods" to="." method="_on_sell_goods_pressed"]
-[connection signal="pressed" from="action buttons/buy sheets" to="." method="_on_buy_sheets_pressed"]
-[connection signal="pressed" from="action buttons/buy blanks" to="." method="_on_buy_blanks_pressed"]
+[connection signal="pressed" from="action buttons/alter_coins" to="." method="_on_alter_coins_pressed"]
+[connection signal="pressed" from="action buttons/make_goods" to="." method="_on_make_goods_pressed"]
+[connection signal="pressed" from="action buttons/sell_goods" to="." method="_on_sell_goods_pressed"]
+[connection signal="pressed" from="action buttons/buy_sheets" to="." method="_on_buy_sheets_pressed"]
+[connection signal="pressed" from="action buttons/buy_blanks" to="." method="_on_buy_blanks_pressed"]
 [connection signal="pressed" from="action buttons/pass time" to="." method="_on_pass_time_pressed"]
 
 [editable path="artist"]

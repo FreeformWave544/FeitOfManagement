@@ -204,18 +204,27 @@ var day:int
 #conrta = contradict elig = eligable
 func assign_task(task,contras:Array,character,eligs):
 	unassign_task(actions, contras)
-	for con in contras:
-		for item in [1,2,3,4,5]:
-			if character_actions[item] == con:
-				character_actions[item] = nothing()
+	#for con in contras:
+		#for item in range(1,5):
+			#if character_actions[item] == con:
+				#character_actions[item] = nothing()
 	
 	
 	for item in eligs:
 		if character == item:
 			actions.append(task)
 			character_actions[char] = task
-
-
+			var guy := find_child(relations.keys()[character - 1])
+			while guy.scale <= Vector2(3.9, 3.9):
+				guy.scale = lerp(guy.scale, Vector2(4.0, 4.0), 0.1)
+				await get_tree().process_frame
+			guy.scale = Vector2(4.0, 4.0)
+			print(task)
+			var targetPos := Vector2($"action buttons".find_child(task).global_position.x + ($"action buttons".find_child(task).size.x / 2), 530.0)
+			guy.position.y = 530.0
+			while abs(guy.position.x - targetPos.x) > 1:
+				guy.position.x = lerp(guy.position.x, targetPos.x, 0.1)
+				await get_tree().process_frame
 
 
 
@@ -276,26 +285,34 @@ func fade() -> void:
 
 
 
+var relations := {
+	"leader": 1,
+	"blacksmith": 2,
+	"artist": 3,
+	"sales_man": 4,
+	"tech": 5
+}
+
 # 3 is the artist
 func _on_button_pressed() -> void:
-	char = 3
+	char = relations["artist"]
 
 
 func _on_blacksmith_button_pressed() -> void:
-	char = 2
+	char = relations["blacksmith"]
 
 
 func _on_leader_button_pressed() -> void:
-	char = 1
+	char = relations["leader"]
 
 
 
 func _on_salesman_button_pressed() -> void:
-	char = 4
+	char = relations["sales_man"]
 
 
 func _on_tech_button_pressed() -> void:
-	char = 5
+	char = relations["tech"]
 
 
 
@@ -308,13 +325,13 @@ var mach_contras = [cutting_sheets,strike_counterfeit_coins]
 var cut_eligs = [5]
 func _on_cut_sheets_pressed() -> void:
 	if sheets >= 10:
-		assign_task(cutting_sheets,mach_contras,char,cut_eligs)
+		assign_task("cutting_sheets",mach_contras,char,cut_eligs)
 
 
 var strike_eligs = [2,5]
 func _on_strike_counterfeit_pressed() -> void:
 	if blanks >= 10:
-		assign_task(strike_counterfeit_coins,mach_contras,char,strike_eligs)
+		assign_task("strike_counterfeit_coins",mach_contras,char,strike_eligs)
 
 
 
@@ -323,7 +340,7 @@ var spark_erosion_contras = [edm_counterfeit_coins]
 var spark_erosion_eligs = [2,5]
 func _on_spark_erode_coins_pressed() -> void:
 	if blanks >= 20:
-		assign_task(edm_counterfeit_coins, spark_erosion_contras, char, spark_erosion_eligs)
+		assign_task("edm_counterfeit_coins", spark_erosion_contras, char, spark_erosion_eligs)
 
 
 
@@ -332,12 +349,12 @@ var forge_contras = [alter_coins]
 var alter_eligs = [2,3]
 func _on_alter_coins_pressed() -> void:
 	if coins["genuine"] >= 5:
-		assign_task(alter_coins, forge_contras, char, alter_eligs)
+		assign_task("alter_coins", forge_contras, char, alter_eligs)
 
 var make_goods_aligs = [2,3]
 func _on_make_goods_pressed() -> void:
 	if sheets >= 10:
-		assign_task(make_goods, forge_contras, char, make_goods_aligs)
+		assign_task("make_goods", forge_contras, char, make_goods_aligs)
 
 
 
@@ -345,12 +362,12 @@ var donate_contras = [donate,sell_goods]
 var donate_eligs = [3,4]
 func _on_assign_donate_button_pressed() -> void:
 	if coins["genuine"] >= 50:
-		assign_task(donate,donate_contras,char,donate_eligs)
+		assign_task("donate",donate_contras,char,donate_eligs)
 
 var sell_eligs = [3,4]
 func _on_sell_goods_pressed() -> void:
 	if goods >= 3:
-		assign_task(sell_goods,donate_contras, char, sell_eligs)
+		assign_task("sell_goods",donate_contras, char, sell_eligs)
 
 
 var trade_contras = [buy_sheets,buy_blanks]
@@ -358,10 +375,10 @@ var trade_eligs = [3,4]
 
 
 func _on_buy_sheets_pressed() -> void:
-	assign_task(buy_sheets, trade_contras, char, trade_eligs)
+	assign_task("buy_sheets", trade_contras, char, trade_eligs)
 
 func _on_buy_blanks_pressed() -> void:
-	assign_task(buy_blanks, trade_contras, char, trade_eligs)
+	assign_task("buy_blanks", trade_contras, char, trade_eligs)
 
 
 
