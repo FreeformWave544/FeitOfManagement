@@ -212,7 +212,7 @@ func assign_task(task,contras:Array,character,eligs):
 	
 	for item in eligs:
 		if character == item:
-			actions.append(task)
+			actions.append(Callable(self, task))
 			character_actions[char] = task
 			var guy := find_child(relations.keys()[character - 1])
 			while guy.scale <= Vector2(3.9, 3.9):
