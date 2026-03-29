@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dmauoq4ff34d2" path="res://assets/objects/background.png" id="3_bmxlf"]
 [ext_resource type="Texture2D" uid="uid://bg0prjf3lnkuu" path="res://assets/objects/edm.png" id="3_rgh2o"]
 [ext_resource type="PackedScene" uid="uid://c5im17riayd4y" path="res://Scenes/artist.tscn" id="4_50glp"]
+[ext_resource type="Texture2D" uid="uid://ccn1p1irtslvm" path="res://assets/objects/coin mint machine.png" id="5_4kpch"]
 [ext_resource type="PackedScene" uid="uid://bq83j26mxnu5t" path="res://Scenes/blacksmith.tscn" id="5_vy5pj"]
 [ext_resource type="PackedScene" uid="uid://bop0h6arsinrr" path="res://Scenes/leader.tscn" id="6_bmxlf"]
 [ext_resource type="PackedScene" uid="uid://cvajp6ld1a2ux" path="res://Scenes/sales_man.tscn" id="7_4kpch"]
@@ -13,6 +14,16 @@
 
 [sub_resource type="Theme" id="Theme_4kpch"]
 default_font = ExtResource("1_bmxlf")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4kpch"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_grg3l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_frkhe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1p5hy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1m7h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r150o"]
 font_size = 128
@@ -49,6 +60,113 @@ position = Vector2(575.99994, 324)
 scale = Vector2(9, 9)
 texture = ExtResource("3_bmxlf")
 
+[node name="Anvil" type="Sprite2D" parent="." unique_id=435165491]
+position = Vector2(292, 523)
+scale = Vector2(4, 4)
+texture = ExtResource("2_kln2b")
+
+[node name="CoinMintMachine" type="Sprite2D" parent="." unique_id=358004528]
+position = Vector2(549, 507)
+scale = Vector2(4, 4)
+texture = ExtResource("5_4kpch")
+
+[node name="Edm" type="Sprite2D" parent="." unique_id=1020034631]
+position = Vector2(744, 547)
+scale = Vector2(4, 4)
+texture = ExtResource("3_rgh2o")
+
+[node name="artist" parent="." unique_id=1484265610 instance=ExtResource("4_50glp")]
+position = Vector2(595, 215)
+scale = Vector2(4, 4)
+metadata/_edit_group_ = true
+
+[node name="Button" parent="artist" index="1" unique_id=1232404125]
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4kpch")
+flat = false
+
+[node name="blacksmith" parent="." unique_id=965881766 instance=ExtResource("5_vy5pj")]
+position = Vector2(300, 539)
+scale = Vector2(4, 4)
+metadata/_edit_group_ = true
+
+[node name="Button" parent="blacksmith" index="1" unique_id=1232404125]
+theme_override_styles/normal = SubResource("StyleBoxEmpty_grg3l")
+flat = false
+
+[node name="leader" parent="." unique_id=1174015265 instance=ExtResource("6_bmxlf")]
+position = Vector2(1429, 222)
+scale = Vector2(4, 4)
+metadata/_edit_group_ = true
+
+[node name="Button" parent="leader" index="1" unique_id=1232404125]
+theme_override_styles/normal = SubResource("StyleBoxEmpty_frkhe")
+flat = false
+
+[node name="sales_man" parent="." unique_id=1487488335 instance=ExtResource("7_4kpch")]
+position = Vector2(400, 215)
+scale = Vector2(4, 4)
+metadata/_edit_group_ = true
+
+[node name="Button" parent="sales_man" index="1" unique_id=1232404125]
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1p5hy")
+flat = false
+
+[node name="tech" parent="." unique_id=872409916 instance=ExtResource("8_grg3l")]
+position = Vector2(948, 540)
+scale = Vector2(4, 4)
+metadata/_edit_group_ = true
+
+[node name="Button" parent="tech" index="1" unique_id=1232404125]
+theme_override_styles/normal = SubResource("StyleBoxEmpty_h1m7h")
+flat = false
+
+[node name="FadeBox" type="ColorRect" parent="." unique_id=438942413]
+z_index = 15
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.16862746, 0.16862746, 0.16862746, 0)
+
+[node name="Label" type="Label" parent="FadeBox" unique_id=1806264430]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+label_settings = SubResource("LabelSettings_r150o")
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1473222535]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -127.0
+offset_bottom = 92.0
+grow_horizontal = 0
+alignment = 1
+
+[node name="Distributed" type="Label" parent="VBoxContainer2" unique_id=934176791]
+layout_mode = 2
+text = "Distributed Coins:
+0"
+horizontal_alignment = 1
+
+[node name="target" type="Label" parent="VBoxContainer2" unique_id=1412413703]
+layout_mode = 2
+horizontal_alignment = 1
+
 [node name="Stats" type="HBoxContainer" parent="." unique_id=114771017]
 layout_mode = 0
 offset_right = 1152.0
@@ -75,12 +193,6 @@ offset_right = 1152.0
 offset_bottom = 109.0
 theme_override_constants/separation = 16
 alignment = 1
-
-[node name="Distributed" type="Label" parent="CoinCount" unique_id=934176791]
-layout_mode = 2
-text = "Distributed Coins:
-0"
-horizontal_alignment = 1
 
 [node name="cQ1" type="Label" parent="CoinCount" unique_id=1409492234]
 layout_mode = 2
@@ -125,6 +237,10 @@ text = "Blanks:
 0"
 horizontal_alignment = 1
 
+[node name="goods" type="Label" parent="Materials" unique_id=433191660]
+layout_mode = 2
+horizontal_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=833049049]
 layout_mode = 0
 offset_left = 43.0
@@ -137,79 +253,6 @@ layout_mode = 2
 
 [node name="reputation level" type="Label" parent="VBoxContainer" unique_id=1876595060]
 layout_mode = 2
-
-[node name="FadeBox" type="ColorRect" parent="." unique_id=438942413]
-z_index = 15
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.16862746, 0.16862746, 0.16862746, 0)
-
-[node name="Label" type="Label" parent="FadeBox" unique_id=1806264430]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-label_settings = SubResource("LabelSettings_r150o")
-horizontal_alignment = 1
-
-[node name="Anvil" type="Sprite2D" parent="." unique_id=435165491]
-position = Vector2(297, 515)
-scale = Vector2(4, 4)
-texture = ExtResource("2_kln2b")
-
-[node name="Edm" type="Sprite2D" parent="." unique_id=1020034631]
-position = Vector2(744, 540)
-scale = Vector2(4, 4)
-texture = ExtResource("3_rgh2o")
-
-[node name="artist" parent="." unique_id=1484265610 instance=ExtResource("4_50glp")]
-position = Vector2(1074, 407)
-metadata/_edit_group_ = true
-
-[node name="Button" parent="artist" index="1" unique_id=1232404125]
-flat = false
-
-[node name="blacksmith" parent="." unique_id=965881766 instance=ExtResource("5_vy5pj")]
-position = Vector2(1072, 333)
-metadata/_edit_group_ = true
-
-[node name="Button" parent="blacksmith" index="1" unique_id=1232404125]
-flat = false
-
-[node name="leader" parent="." unique_id=1174015265 instance=ExtResource("6_bmxlf")]
-position = Vector2(1352, 190)
-scale = Vector2(4, 4)
-metadata/_edit_group_ = true
-
-[node name="Button" parent="leader" index="1" unique_id=1232404125]
-flat = false
-
-[node name="sales_man" parent="." unique_id=1487488335 instance=ExtResource("7_4kpch")]
-position = Vector2(1074, 469)
-metadata/_edit_group_ = true
-
-[node name="Button" parent="sales_man" index="1" unique_id=1232404125]
-flat = false
-
-[node name="tech" parent="." unique_id=872409916 instance=ExtResource("8_grg3l")]
-position = Vector2(1081, 545)
-metadata/_edit_group_ = true
-
-[node name="Button" parent="tech" index="1" unique_id=1232404125]
-flat = false
 
 [node name="debug labels" type="Control" parent="." unique_id=157324631]
 visible = false
@@ -359,6 +402,85 @@ offset_right = 144.0
 offset_bottom = 46.0
 text = "end hour"
 
+[node name="Label" type="Label" parent="." unique_id=546145101]
+layout_mode = 0
+offset_left = 1025.0
+offset_top = 59.0
+offset_right = 1152.0
+offset_bottom = 80.0
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="." unique_id=1687628615]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 304.0
+offset_right = 400.0
+offset_bottom = 344.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer3" unique_id=1900128649]
+layout_mode = 2
+theme_override_constants/separation = 17
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer3/HBoxContainer2" unique_id=559431766]
+layout_mode = 2
+text = "bad coins"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="VBoxContainer3/HBoxContainer2" unique_id=1357949676]
+layout_mode = 2
+text = "mid coins"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer3/HBoxContainer2" unique_id=1884992155]
+layout_mode = 2
+text = "good coins"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer3/HBoxContainer2" unique_id=10062643]
+layout_mode = 2
+text = "real coins"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer3" unique_id=1472352288]
+layout_mode = 2
+alignment = 1
+
+[node name="bad coins" type="SpinBox" parent="VBoxContainer3/HBoxContainer" unique_id=1933139272]
+layout_mode = 2
+max_value = 10.0
+alignment = 1
+
+[node name="mid coins" type="SpinBox" parent="VBoxContainer3/HBoxContainer" unique_id=376633697]
+layout_mode = 2
+max_value = 10.0
+alignment = 1
+
+[node name="good coins" type="SpinBox" parent="VBoxContainer3/HBoxContainer" unique_id=949775584]
+layout_mode = 2
+max_value = 10.0
+alignment = 1
+
+[node name="genuine coins" type="SpinBox" parent="VBoxContainer3/HBoxContainer" unique_id=113383022]
+layout_mode = 2
+max_value = 10.0
+alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=381621124]
+layout_mode = 0
+offset_left = 226.0
+offset_top = 19.0
+offset_right = 302.0
+offset_bottom = 40.0
+text = "artist shop"
+
+[node name="Label3" type="Label" parent="." unique_id=177597794]
+layout_mode = 0
+offset_left = 884.0
+offset_top = 20.0
+offset_right = 983.0
+offset_bottom = 41.0
+text = "material shop"
+
 [connection signal="pressed" from="artist/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="blacksmith/Button" to="." method="_on_blacksmith_button_pressed"]
 [connection signal="pressed" from="leader/Button" to="." method="_on_leader_button_pressed"]
@@ -374,6 +496,10 @@ text = "end hour"
 [connection signal="pressed" from="action buttons/buy_sheets" to="." method="_on_buy_sheets_pressed"]
 [connection signal="pressed" from="action buttons/buy_blanks" to="." method="_on_buy_blanks_pressed"]
 [connection signal="pressed" from="action buttons/pass time" to="." method="time_pass"]
+[connection signal="value_changed" from="VBoxContainer3/HBoxContainer/bad coins" to="." method="_on_bad_coins_value_changed"]
+[connection signal="value_changed" from="VBoxContainer3/HBoxContainer/mid coins" to="." method="_on_mid_coins_value_changed"]
+[connection signal="value_changed" from="VBoxContainer3/HBoxContainer/good coins" to="." method="_on_good_coins_value_changed"]
+[connection signal="value_changed" from="VBoxContainer3/HBoxContainer/genuine coins" to="." method="_on_genuine_coins_value_changed"]
 
 [editable path="artist"]
 [editable path="blacksmith"]
