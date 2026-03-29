@@ -11,11 +11,7 @@ func _ready() -> void:
 @onready var artist: Node2D = $artist
 @onready var sales_man: Node2D = $sales_man
 @onready var tech: Node2D = $tech
-
-
 var char_objs = [leader,blacksmith,artist,sales_man,tech]
-
-
 var char :int = 0
 var character_actions = {
 	1:_update_UI,
@@ -25,23 +21,20 @@ var character_actions = {
 	5:_update_UI
 }
 
-
-
 var coins := {
 	"genuine": 10,
 	"cQ1": 10,
 	"cQ2": 10,
 	"cQ3": 10
 }
+
 var distributedC: int = 0
 var sheets: int = 10
 var blanks: int = 10
-
 var _rep := 1
 var rep:
 	get: return _rep
 	set(value): _rep = clamp(value, 1, 5)
-
 var _sus := 1
 var sus:
 	get: return _sus
@@ -52,45 +45,32 @@ func cutting_sheets():
 	blanks += 10
 	_update_UI()
 
-
 func strike_counterfeit_coins():
 	blanks -= 10
 	coins["cQ3"] += 10
 	_update_UI()
 
-
-
-#emd is the same as spark erosion
+#EMD is the same as spark erosion
 func edm_counterfeit_coins():
 	blanks -= 20
 	coins["cQ2"] += 20
 	_update_UI()
 
-
-
-
 var goods := 0
-
 func alter_coins():
 	coins["genuine"] -= 5
 	goods += 1
 	_update_UI()
-
 
 func make_goods():
 	sheets -= 10
 	goods += 1
 	_update_UI()
 
-
-
 @onready var bad_coins: SpinBox = $"VBoxContainer3/HBoxContainer/bad coins"
 @onready var mid_coins: SpinBox = $"VBoxContainer3/HBoxContainer/mid coins"
 @onready var good_coins: SpinBox = $"VBoxContainer3/HBoxContainer/good coins"
 @onready var genuine_coins: SpinBox = $"VBoxContainer3/HBoxContainer/genuine coins"
-
-
-
 
 func _on_bad_coins_value_changed(value: float) -> void:
 	usedc = value
@@ -98,20 +78,17 @@ func _on_bad_coins_value_changed(value: float) -> void:
 		value = usedc
 	_update_UI()
 
-
 func _on_mid_coins_value_changed(value: float) -> void:
 	usedcc = value
 	if value != usedcc:
 		value = usedcc
 	_update_UI()
 
-
 func _on_good_coins_value_changed(value: float) -> void:
 	usedccc = value
 	if value != usedccc:
 		value = usedccc
 	_update_UI()
-
 
 func _on_genuine_coins_value_changed(value: float) -> void:
 	usedg = value
@@ -123,7 +100,6 @@ var _usedg := 0
 var usedg:
 	get: return _usedg
 	set(value): _usedg = clamp(value, 0, coins["genuine"])
-	
 
 var _usedc := 0
 var usedc:
@@ -139,7 +115,6 @@ var _usedccc := 0
 var usedccc:
 	get: return _usedccc
 	set(value): _usedccc = clamp(value, 0, coins["cQ3"])
-
 
 func trade(price, product_name:String, amnt, exp):
 	print(price)
@@ -165,8 +140,6 @@ func trade(price, product_name:String, amnt, exp):
 	if randf() < risk: sus += 1
 	_update_UI()
 
-
-
 func buy_sheets():
 	trade(5, "sheets", 10, 1)
 
@@ -184,14 +157,6 @@ func sell_goods():
 	distributedC += 5 + rep
 	_update_UI()
 
-
-#@onready var char_label: Label = $"debug labels/char label"
-#@onready var actions_label: Label = $"debug labels/actions label"
-#@onready var leader_action: Label = $"debug labels/leader action"
-#@onready var black_smith_action: Label = $"debug labels/black smith action"
-#@onready var artist_action: Label = $"debug labels/artist action"
-#@onready var sales_man_action: Label = $"debug labels/sales man action"
-#@onready var tech_action: Label = $"debug labels/tech action"
 @onready var hour: Label = $Stats/Hour
 @onready var days: Label = $Stats/Day
 @onready var distributed: Label = $VBoxContainer2/Distributed
@@ -208,42 +173,25 @@ func sell_goods():
 
 
 func _update_UI():
-	#actions_label.text = str(actions)
-	#char_label.text = str(char)
-	#leader_action.text = str(character_actions[1])
-	#black_smith_action.text = str(character_actions[2])
-	#artist_action.text = str(character_actions[3])
-	#sales_man_action.text = str(character_actions[4])
-	#tech_action.text = str(character_actions[5])
-	
 	hour.text = "hour " + str(tod) + "/8"
 	days.text = "day " + str(day)
-	
 	targetlabel.text = "target " +str(target)
 	distributed.text = "distributed " + str(distributedC)
 	c_q_1.text = "bad fakes " + str(coins["cQ1"])
 	c_q_2.text = "mid fakes " + str(coins["cQ2"])
 	c_q_3.text = "good fakes " + str(coins["cQ3"])
 	real.text = "genuines " + str(coins["genuine"])
-	
 	sheetslabel.text = "sheet " + str(sheets)
 	blankslabel.text = "blanks " + str(blanks)
-	
-	
 	sus_level.text = "sus level " + str(sus)
 	reputation_level.text = "reputation " + str(rep)
-	
 	goodslabel.text = "goods " + str(goods)
-
 	target = (day+1) * 5
 	if sus == 5: lose()
-
 	bad_coins.max_value = float(coins["cQ1"])
 	mid_coins.max_value = float(coins["cQ2"])
 	good_coins.max_value = float(coins["cQ3"])
 	genuine_coins.max_value = float(coins["genuine"])
-
-
 
 
 #TIME SYSTEM
@@ -253,7 +201,6 @@ var tod:int = 0 :
 		set (new):
 			tod = clamp(new, 0, 8)
 			_update_UI()
-
 var day:int
 
 #conrta = contradict elig = eligable
@@ -263,13 +210,10 @@ func assign_task(task,contras:Array,character,eligs):
 		for item in range(1,5):
 			if character_actions[item] == con:
 				character_actions[item] = nothing()
-	
-	
 	for item in eligs:
 		if character == item:
 			actions.append(task)
 			character_actions[char] = task
-	
 	if character == 1:
 		while abs(leader.global_position - task_positions[task]) > Vector2(1, 1):
 			leader.global_position = lerp(leader.global_position, task_positions[task], 0.1)
@@ -293,7 +237,6 @@ func assign_task(task,contras:Array,character,eligs):
 	char = 0
 	_update_UI()
 
-
 var task_positions = {
 	cutting_sheets: Vector2(485,539),
 	strike_counterfeit_coins : Vector2(600,539),
@@ -306,25 +249,19 @@ var task_positions = {
 	buy_blanks : Vector2(800,215)
 	}
 
-
 func unassign_task(aray, contras):
 	for item in contras:
 		aray.erase(item)
 	_update_UI()
 
-
-
 func lose():
 	get_tree().change_scene_to_file("res://UI/MainMenu.tscn")
 
 var target: int 
-
 func day_end():
 	tod = 1
-	if distributedC < target:
-		lose()
-	else:
-			fade()
+	if distributedC < target: lose()
+	else: fade()
 	day += 1
 	distributedC = 0
 	_update_UI()
@@ -332,14 +269,9 @@ func day_end():
 func time_pass():
 	if tod < 8:
 		tod += 1
-		for act in actions:
-			act.call()
-	elif tod == 8:
-		day_end()
-	
-	for item in [1,2,3,4,5]:
-		character_actions[item] = nothing()
-	
+		for act in actions: act.call()
+	elif tod == 8: day_end()
+	for item in [1,2,3,4,5]: character_actions[item] = nothing()
 	actions = []
 	$Stats/Hour.text = str(tod)
 	add_child(load(["res://Minigame/CoinFlaw.tscn", "res://Minigame/wackamole.tscn"].pick_random()).instantiate())
@@ -359,7 +291,6 @@ func fade() -> void:
 		await get_tree().process_frame
 	$FadeBox.color.a = 0.0
 
-
 var relations := {
 	"leader": 1,
 	"blacksmith": 2,
@@ -373,22 +304,17 @@ func _on_button_pressed() -> void:
 	char = relations["artist"]
 	_update_UI()
 
-
 func _on_blacksmith_button_pressed() -> void:
 	char = relations["blacksmith"]
 	_update_UI()
-
 
 func _on_leader_button_pressed() -> void:
 	char = relations["leader"]
 	_update_UI()
 
-
-
 func _on_salesman_button_pressed() -> void:
 	char = relations["sales_man"]
 	_update_UI()
-
 
 func _on_tech_button_pressed() -> void:
 	char = relations["tech"]
@@ -400,59 +326,42 @@ func _on_cut_sheets_pressed() -> void:
 	if sheets >= 10:
 		assign_task(cutting_sheets,mach_contras,char,cut_eligs)
 
-
 var strike_eligs = [2,5]
 func _on_strike_counterfeit_pressed() -> void:
 	if blanks >= 10:
 		assign_task(strike_counterfeit_coins,mach_contras,char,strike_eligs)
 
-
-
-
 var spark_erosion_contras = [edm_counterfeit_coins]
 var spark_erosion_eligs = [2,5]
 func _on_spark_erode_coins_pressed() -> void:
-	if blanks >= 20:
-		assign_task(edm_counterfeit_coins, spark_erosion_contras, char, spark_erosion_eligs)
-
-
-
+	if blanks >= 20: assign_task(edm_counterfeit_coins, spark_erosion_contras, char, spark_erosion_eligs)
 
 var forge_contras = [alter_coins]
 var alter_eligs = [2,3]
 func _on_alter_coins_pressed() -> void:
-	if coins["genuine"] >= 5:
-		assign_task(alter_coins, forge_contras, char, alter_eligs)
+	if coins["genuine"] >= 5: assign_task(alter_coins, forge_contras, char, alter_eligs)
 
 var make_goods_aligs = [2,3]
 func _on_make_goods_pressed() -> void:
-	if sheets >= 10:
-		assign_task(make_goods, forge_contras, char, make_goods_aligs)
-
-
+	if sheets >= 10: assign_task(make_goods, forge_contras, char, make_goods_aligs)
 
 var donate_contras = [donate,sell_goods]
 var donate_eligs = [3,4]
 func _on_assign_donate_button_pressed() -> void:
-	if coins["genuine"] >= 50:
-		assign_task(donate,donate_contras,char,donate_eligs)
+	if coins["genuine"] >= 50: assign_task(donate,donate_contras,char,donate_eligs)
 
 var sell_eligs = [3,4]
 func _on_sell_goods_pressed() -> void:
-	if goods >= 3:
-		assign_task(sell_goods,donate_contras, char, sell_eligs)
+	if goods >= 3: assign_task(sell_goods,donate_contras, char, sell_eligs)
 
 
 var trade_contras = [buy_sheets,buy_blanks]
 var trade_eligs = [3,4]
 
 
-func _on_buy_sheets_pressed() -> void:
-	assign_task(buy_sheets, trade_contras, char, trade_eligs)
+func _on_buy_sheets_pressed() -> void: assign_task(buy_sheets, trade_contras, char, trade_eligs)
 
-func _on_buy_blanks_pressed() -> void:
-	assign_task(buy_blanks, trade_contras, char, trade_eligs)
-
+func _on_buy_blanks_pressed() -> void: assign_task(buy_blanks, trade_contras, char, trade_eligs)
 
 func _on_print_everything_pressed() -> void:
 	print(coins)
