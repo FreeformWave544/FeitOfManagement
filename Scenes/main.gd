@@ -3,7 +3,8 @@ extends Control
 func nothing():
 	pass
 
-
+func _ready() -> void:
+	_update_UI()
 
 @onready var leader: Node2D = $leader
 @onready var blacksmith: Node2D = $blacksmith
@@ -17,11 +18,11 @@ var char_objs = [leader,blacksmith,artist,sales_man,tech]
 
 var char :int = 0
 var character_actions = {
-	1:nothing(),
-	2:nothing(),
-	3:nothing(),
-	4:nothing(),
-	5:nothing()
+	1:_update_UI,
+	2:_update_UI,
+	3:_update_UI,
+	4:_update_UI,
+	5:_update_UI
 }
 
 
@@ -49,11 +50,13 @@ var sus:
 func cutting_sheets():
 	sheets -= 10
 	blanks += 10
+	_update_UI()
 
 
 func strike_counterfeit_coins():
 	blanks -= 10
 	coins["cQ3"] += 10
+	_update_UI()
 
 
 
@@ -61,6 +64,7 @@ func strike_counterfeit_coins():
 func edm_counterfeit_coins():
 	blanks -= 20
 	coins["cQ2"] += 20
+	_update_UI()
 
 
 
@@ -70,11 +74,13 @@ var goods := 0
 func alter_coins():
 	coins["genuine"] -= 5
 	goods += 1
+	_update_UI()
 
 
 func make_goods():
 	sheets -= 10
 	goods += 1
+	_update_UI()
 
 
 
@@ -90,24 +96,28 @@ func _on_bad_coins_value_changed(value: float) -> void:
 	usedc = value
 	if value != usedc:
 		value = usedc
+	_update_UI()
 
 
 func _on_mid_coins_value_changed(value: float) -> void:
 	usedcc = value
 	if value != usedcc:
 		value = usedcc
+	_update_UI()
 
 
 func _on_good_coins_value_changed(value: float) -> void:
 	usedccc = value
 	if value != usedccc:
 		value = usedccc
+	_update_UI()
 
 
 func _on_genuine_coins_value_changed(value: float) -> void:
 	usedg = value
 	if value != usedg:
 		value = usedg
+	_update_UI()
 
 var _usedg := 0
 var usedg:
@@ -153,7 +163,7 @@ func trade(price, product_name:String, amnt, exp):
 	var fake_value = take_c1 * 1.5 + take_c2 * 1.0 + take_c3 * 0.5
 	var risk = clamp((fake_value * exp - take_g) / price, 0.0, 1.0)
 	if randf() < risk: sus += 1
-	#money -= price
+	_update_UI()
 
 
 
@@ -166,29 +176,22 @@ func buy_blanks():
 func donate():
 	coins["genuine"] -= 50
 	sus -= 1
+	_update_UI()
 
 func sell_goods():
 	goods -= 3
 	coins["genuine"] += 10 + rep
 	distributedC += 5 + rep
+	_update_UI()
 
 
-
-
-
-func _ready() -> void:
-	pass
-
-
-
-@onready var char_label: Label = $"debug labels/char label"
-
-@onready var actions_label: Label = $"debug labels/actions label"
-@onready var leader_action: Label = $"debug labels/leader action"
-@onready var black_smith_action: Label = $"debug labels/black smith action"
-@onready var artist_action: Label = $"debug labels/artist action"
-@onready var sales_man_action: Label = $"debug labels/sales man action"
-@onready var tech_action: Label = $"debug labels/tech action"
+#@onready var char_label: Label = $"debug labels/char label"
+#@onready var actions_label: Label = $"debug labels/actions label"
+#@onready var leader_action: Label = $"debug labels/leader action"
+#@onready var black_smith_action: Label = $"debug labels/black smith action"
+#@onready var artist_action: Label = $"debug labels/artist action"
+#@onready var sales_man_action: Label = $"debug labels/sales man action"
+#@onready var tech_action: Label = $"debug labels/tech action"
 @onready var hour: Label = $Stats/Hour
 @onready var days: Label = $Stats/Day
 @onready var distributed: Label = $VBoxContainer2/Distributed
@@ -204,16 +207,14 @@ func _ready() -> void:
 @onready var goodslabel: Label = $Materials/goods
 
 
-
-
-func _process(delta: float) -> void:
-	actions_label.text = str(actions)
-	char_label.text = str(char)
-	leader_action.text = str(character_actions[1])
-	black_smith_action.text = str(character_actions[2])
-	artist_action.text = str(character_actions[3])
-	sales_man_action.text = str(character_actions[4])
-	tech_action.text = str(character_actions[5])
+func _update_UI():
+	#actions_label.text = str(actions)
+	#char_label.text = str(char)
+	#leader_action.text = str(character_actions[1])
+	#black_smith_action.text = str(character_actions[2])
+	#artist_action.text = str(character_actions[3])
+	#sales_man_action.text = str(character_actions[4])
+	#tech_action.text = str(character_actions[5])
 	
 	hour.text = "hour " + str(tod) + "/8"
 	days.text = "day " + str(day)
@@ -233,13 +234,10 @@ func _process(delta: float) -> void:
 	reputation_level.text = "reputation " + str(rep)
 	
 	goodslabel.text = "goods " + str(goods)
-	
-	
+
 	target = (day+1) * 5
-	if sus == 5:
-		lose()
-	
-	
+	if sus == 5: lose()
+
 	bad_coins.max_value = float(coins["cQ1"])
 	mid_coins.max_value = float(coins["cQ2"])
 	good_coins.max_value = float(coins["cQ3"])
@@ -254,6 +252,7 @@ var actions:Array[Callable]
 var tod:int = 0 :
 		set (new):
 			tod = clamp(new, 0, 8)
+			_update_UI()
 
 var day:int
 
@@ -272,25 +271,27 @@ func assign_task(task,contras:Array,character,eligs):
 			character_actions[char] = task
 	
 	if character == 1:
-		leader.global_position = task_positions[task]
+		while abs(leader.global_position - task_positions[task]) > Vector2(1, 1):
+			leader.global_position = lerp(leader.global_position, task_positions[task], 0.1)
+			await get_tree().process_frame
 	if character == 2:
-		blacksmith.global_position = task_positions[task]
+		while abs(blacksmith.global_position - task_positions[task]) > Vector2(1, 1):
+			blacksmith.global_position = lerp(blacksmith.global_position, task_positions[task], 0.1)
+			await get_tree().process_frame
 	if character == 3:
-		artist.global_position = task_positions[task]
+		while abs(artist.global_position - task_positions[task]) > Vector2(1, 1):
+			artist.global_position = lerp(artist.global_position, task_positions[task], 0.1)
+			await get_tree().process_frame
 	if character == 4:
-		sales_man.global_position = task_positions[task]
+		while abs(sales_man.global_position - task_positions[task]) > Vector2(1, 1):
+			sales_man.global_position = lerp(sales_man.global_position, task_positions[task], 0.1)
+			await get_tree().process_frame
 	if character == 5:
-		tech.global_position = task_positions[task]
-
-
-
-
-
-
-
-
-
-
+		while abs(tech.global_position - task_positions[task]) > Vector2(1, 1):
+			tech.global_position = lerp(tech.global_position, task_positions[task], 0.1)
+			await get_tree().process_frame
+	char = 0
+	_update_UI()
 
 
 var task_positions = {
@@ -309,7 +310,7 @@ var task_positions = {
 func unassign_task(aray, contras):
 	for item in contras:
 		aray.erase(item)
-	#pass
+	_update_UI()
 
 
 
@@ -326,6 +327,7 @@ func day_end():
 			fade()
 	day += 1
 	distributedC = 0
+	_update_UI()
 
 func time_pass():
 	if tod < 8:
@@ -341,6 +343,7 @@ func time_pass():
 	actions = []
 	$Stats/Hour.text = str(tod)
 	add_child(load(["res://Minigame/CoinFlaw.tscn", "res://Minigame/wackamole.tscn"].pick_random()).instantiate())
+	_update_UI()
 
 func fade() -> void:
 	while $FadeBox.color.a <= 0.9:
@@ -348,21 +351,13 @@ func fade() -> void:
 		await get_tree().process_frame
 	$FadeBox.color.a = 1.0
 	await get_tree().create_timer(1.0).timeout
-	#$FadeBox/Label.text = "Day: " + str(day)
+	$FadeBox/Label.text = "Day: " + str(day)
 	await get_tree().create_timer(1.0).timeout
 	$FadeBox/Label.text = ""
 	while $FadeBox.color.a >= 0.1:
 		$FadeBox.color.a = lerp($FadeBox.color.a, 0.0, 0.15)
 		await get_tree().process_frame
 	$FadeBox.color.a = 0.0
-
-
-
-
-
-
-
-
 
 
 var relations := {
@@ -376,30 +371,28 @@ var relations := {
 # 3 is the artist
 func _on_button_pressed() -> void:
 	char = relations["artist"]
+	_update_UI()
 
 
 func _on_blacksmith_button_pressed() -> void:
 	char = relations["blacksmith"]
+	_update_UI()
 
 
 func _on_leader_button_pressed() -> void:
 	char = relations["leader"]
+	_update_UI()
 
 
 
 func _on_salesman_button_pressed() -> void:
 	char = relations["sales_man"]
+	_update_UI()
 
 
 func _on_tech_button_pressed() -> void:
 	char = relations["tech"]
-
-
-
-
-
-
-
+	_update_UI()
 
 var mach_contras = [cutting_sheets,strike_counterfeit_coins]
 var cut_eligs = [5]
