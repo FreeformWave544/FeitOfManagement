@@ -219,8 +219,9 @@ func assign_task(task,contras:Array,character,eligs):
 				guy.scale = lerp(guy.scale, Vector2(4.0, 4.0), 0.1)
 				await get_tree().process_frame
 			guy.scale = Vector2(4.0, 4.0)
-			var targetPos := Vector2($"action buttons".find_child(task).global_position.x + ($"action buttons".find_child(task).size.x / 2), 530.0)
-			guy.position.y = 530.0
+			var targetPos := Vector2($"action buttons".find_child(task).global_position)
+			
+			#guy.position.y = 530.0
 			while abs(guy.position.x - targetPos.x) > 1:
 				guy.position.x = lerp(guy.position.x, targetPos.x, 0.1)
 				await get_tree().process_frame
@@ -377,3 +378,7 @@ func _on_buy_sheets_pressed() -> void:
 
 func _on_buy_blanks_pressed() -> void:
 	assign_task("buy_blanks", trade_contras, char, trade_eligs)
+
+
+func _on_print_everything_pressed() -> void:
+	print(coins)

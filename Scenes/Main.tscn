@@ -267,6 +267,13 @@ offset_top = 541.0
 offset_right = 996.0
 offset_bottom = 564.0
 
+[node name="print everything" type="Button" parent="debug labels" unique_id=1213063273]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "print
+"
+
 [node name="action buttons" type="Control" parent="." unique_id=412513953]
 anchors_preset = 0
 offset_right = 40.0
